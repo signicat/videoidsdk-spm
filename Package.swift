@@ -5,7 +5,7 @@ import PackageDescription
 
 let version: String = "1.49.0-RC"
 let urlVersion: String = "1.49.0"
-let checksum: String = "c16852c1b7db5069c2d1b3022248de2fd27fb85585d5fc31dcc3d9aec4f0532c"
+let checksum: String = "8744558a1f28ada1aa517c1e52c310b949acb82e71be83bd26214da895002350"
 
 
 let package = Package(
