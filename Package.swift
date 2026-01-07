@@ -3,15 +3,10 @@
 
 import PackageDescription
 
-let version: String = "8888-test-only"
-let urlVersion: String = "8888-test-only"
-let checksum: String = "b0355ae9dbcbbc0dd7ffa0845a0dbfb6410219c03aff156af5d880249874e12e"
+let version: String = "1.49.0-RC"
+let urlVersion: String = "1.49.0"
+let checksum: String = "e7c2785439c19b50d56da6f88b43bb52150551134facf61ee608e7224f1fcc2b"
 
-let dependencies: [Target.Dependency] = [
-    .product(name: "WebRTC", package: "WebRTC"),
-    .product(name: "Lottie", package: "lottie-spm"),
-    .product(name: "OpenSSL", package: "OpenSSL")
-]
 
 let package = Package(
     name: "VideoIDSDK",
@@ -21,7 +16,8 @@ let package = Package(
     products: [
         .library(
             name: "VideoIDSDK",
-            targets: ["VideoIDSDK", "_VideoIDSDKStub"]),
+            targets: ["_VideoIDSDKStub"]
+        ),
     ],
     dependencies: [
         .package(url: "https://github.com/airbnb/lottie-spm.git", exact: "4.4.3"),
@@ -32,11 +28,20 @@ let package = Package(
         .binaryTarget(
             name: "VideoIDSDK",
             url: "https://eid-librerias-ios.s3.eu-west-1.amazonaws.com/VideoID-sdk/\(urlVersion)/VideoIDSDK.xcframework.zip",
-            checksum: checksum),
-        .target(name: "_VideoIDSDKStub",
-                dependencies: dependencies,
-                swiftSettings: [
-                    .define("PLATFORM_IOS_ONLY", .when(platforms: [.iOS]))
-                ])
+            checksum: checksum
+        ),
+        .target(
+            name: "_VideoIDSDKStub",
+            dependencies: [
+                .target(name: "VideoIDSDK"),
+                .product(name: "Lottie", package: "lottie-spm"),
+                .product(name: "WebRTC", package: "WebRTC"),
+                .product(name: "OpenSSL", package: "OpenSSL")
+            ],
+            path: "Sources/_VideoIDSDKStub",
+            swiftSettings: [
+                .define("PLATFORM_IOS_ONLY", .when(platforms: [.iOS]))
+            ]
+        )
     ]
 )
