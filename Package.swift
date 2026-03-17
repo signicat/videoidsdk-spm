@@ -3,9 +3,9 @@
 
 import PackageDescription
 
-let version: String = "26.10.3-RC"
-let urlVersion: String = "26.10.3"
-let checksum: String = "11d73b4589d9a24f2d933cd15365fbf1b2e8ee9257fddd10b2dbaf06862297bf"
+let version: String = "26.10.4-RC"
+let urlVersion: String = "26.10.4"
+let checksum: String = "3407c5a4d28ec4bc5d2bab0936c81bbfb80f41a3f4c4ea4a516ecdf2bcd83416"
 
 let dependencies: [Target.Dependency] = [
     .product(name: "WebRTC", package: "WebRTC"),
