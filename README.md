@@ -33,6 +33,8 @@ This ensures you always get the latest compatible version (e.g., `1.41.0`, `1.99
 
 4. Add `VideoIDSDK` to your target.
 
+VideoIDSDK depends transitively on the binary Catnip SwiftPM package for shared runtime UI components. Xcode resolves and embeds `Catnip.framework` automatically when this package is added. App code should continue to import only `VideoIDSDK`; adding Catnip manually is not required.
+
 
 
 Alternatively, add this to your `Package.swift`:
@@ -118,4 +120,3 @@ class AuthorizationResponse: Decodable {
         case authorization
     }
 }
-
