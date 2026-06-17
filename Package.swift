@@ -3,43 +3,44 @@
 
 import PackageDescription
 
-let version: String = "26.20.1-RC"
-let urlVersion: String = "26.20.1"
-let checksum: String = "127c5a0a4e9f56f1fac664e8713c61f1da78dfe4925b5dac198330ba57857e8e"
-let catnipVersion = Version(0, 0, 5)
+let version: String = "26.24.2-RC"
+let urlVersion: String = "26.24.2"
+let checksum: String = "5fe277d60111061f0ec94cf937d05c8bf5724c65a854853c12787de334221cf8"
+let catnipVersion = Version(0, 0, 6)
 
 let dependencies: [Target.Dependency] = [
     .product(name: "Catnip", package: "catnip-spm"),
     .product(name: "WebRTC", package: "WebRTC"),
     .product(name: "Lottie", package: "lottie-spm"),
-    .product(name: "OpenSSL", package: "OpenSSL")
+    .product(name: "OpenSSL", package: "OpenSSL"),
 ]
 
 let package = Package(
     name: "VideoIDSDK",
     platforms: [.iOS("15.1"),
-                .macOS(.v10_15)
-    ],
+                .macOS(.v10_15)],
     products: [
         .library(
             name: "VideoIDSDK",
-            targets: ["VideoIDSDK", "_VideoIDSDKStub"]),
+            targets: ["VideoIDSDK", "_VideoIDSDKStub"]
+        ),
     ],
     dependencies: [
         .package(url: "https://github.com/signicat/catnip-spm.git", exact: catnipVersion),
         .package(url: "https://github.com/airbnb/lottie-spm.git", exact: "4.4.3"),
         .package(url: "https://github.com/krzyzanowskim/OpenSSL.git", from: "3.2.2000"),
-        .package(url: "https://github.com/stasel/WebRTC.git", exact: "134.0.0")
+        .package(url: "https://github.com/stasel/WebRTC.git", exact: "134.0.0"),
     ],
     targets: [
         .binaryTarget(
             name: "VideoIDSDK",
             url: "https://eid-librerias-ios.s3.eu-west-1.amazonaws.com/VideoID-sdk/\(urlVersion)/VideoIDSDK.xcframework.zip",
-            checksum: checksum),
+            checksum: checksum
+        ),
         .target(name: "_VideoIDSDKStub",
                 dependencies: dependencies,
                 swiftSettings: [
-                    .define("PLATFORM_IOS_ONLY", .when(platforms: [.iOS]))
-                ])
+                    .define("PLATFORM_IOS_ONLY", .when(platforms: [.iOS])),
+                ]),
     ]
 )
