@@ -5,8 +5,8 @@ import PackageDescription
 
 let version: String = "26.24.4-RC"
 let urlVersion: String = "26.24.4"
-let checksum: String = "57e7e346b2fc151d24ac16181c81981c9a7a38a86d50a76ec8f4d87b25f00f57"
-let catnipVersion = Version(0, 0, 8)
+let checksum: String = "13c13d91f3e11dcb19ab712e16fa578e52f5ee9dcdf8e1bfd9851e094c9d6488"
+let catnipVersion = Version(0, 0, 9)
 
 let dependencies: [Target.Dependency] = [
     .product(name: "Catnip", package: "catnip-spm"),

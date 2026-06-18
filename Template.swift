@@ -6,7 +6,7 @@ import PackageDescription
 let version: String = "REPLACE_VERSION"
 let urlVersion: String = "REPLACE_URL_VERSION"
 let checksum: String = "REPLACE_CHECKSUM"
-let catnipVersion = Version(0, 0, 8)
+let catnipVersion = Version(0, 0, 9)
 
 let dependencies: [Target.Dependency] = [
     .product(name: "Catnip", package: "catnip-spm"),
