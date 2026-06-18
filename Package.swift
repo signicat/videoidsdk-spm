@@ -5,7 +5,7 @@ import PackageDescription
 
 let version: String = "26.24.2-RC"
 let urlVersion: String = "26.24.2"
-let checksum: String = "cbd7b34664f9a57a918953963b121ddf543bb0e4abc6d09f8a64935baf23346e"
+let checksum: String = "d12e22c2a16f8390c67529e2526e9b8ea8102fa06dfc715c43c2f71d85689a57"
 let catnipVersion = Version(0, 0, 7)
 
 let dependencies: [Target.Dependency] = [
