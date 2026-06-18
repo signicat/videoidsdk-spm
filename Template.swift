@@ -6,8 +6,10 @@ import PackageDescription
 let version: String = "REPLACE_VERSION"
 let urlVersion: String = "REPLACE_URL_VERSION"
 let checksum: String = "REPLACE_CHECKSUM"
+let catnipVersion = Version(0, 0, 8)
 
 let dependencies: [Target.Dependency] = [
+    .product(name: "Catnip", package: "catnip-spm"),
     .product(name: "WebRTC", package: "WebRTC"),
     .product(name: "Lottie", package: "lottie-spm"),
     .product(name: "OpenSSL", package: "OpenSSL"),
@@ -24,6 +26,7 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(url: "https://github.com/signicat/catnip-spm.git", exact: catnipVersion),
         .package(url: "https://github.com/airbnb/lottie-spm.git", exact: "4.4.3"),
         .package(url: "https://github.com/krzyzanowskim/OpenSSL.git", from: "3.2.2000"),
         .package(url: "https://github.com/stasel/WebRTC.git", exact: "134.0.0"),
