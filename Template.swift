@@ -24,7 +24,7 @@ let package = Package(
             targets: ["VideoIDSDK", "_VideoIDSDKStub"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/airbnb/lottie-spm.git", exact: "4.4.3"),
+        .package(url: "https://github.com/airbnb/lottie-spm.git", exact: "4.5.2"),
         .package(url: "https://github.com/krzyzanowskim/OpenSSL.git", from: "3.2.2000"),
         .package(url: "https://github.com/stasel/WebRTC.git", exact: "134.0.0")
     ],
