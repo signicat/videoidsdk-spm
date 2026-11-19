@@ -1,0 +1,10 @@
+framework module VideoIDSDK {
+  umbrella header "VideoIDSDK.h"
+  export *
+
+  module * { export * }
+}
+
+module VideoIDSDK.Swift {
+  header "VideoIDSDK-Swift.h"
+}

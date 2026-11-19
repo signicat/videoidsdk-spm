@@ -1,0 +1,1835 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.3.2 effective-5.10 (swiftlang-6.3.2.1.108 clang-2100.1.1.101)
+// swift-module-flags: -target arm64-apple-ios15.1-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name VideoIDSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.2
+import AVFoundation
+import Combine
+import CommonCrypto
+import CoreGraphics
+import CoreImage
+import CoreMedia
+import CryptoKit
+import DeveloperToolsSupport
+import DeviceCheck
+import Foundation
+import ImageIO
+import Network
+import OSLog
+import QuartzCore
+import Swift
+import SwiftUI
+import UIKit.UIImage
+import UIKit
+import UniformTypeIdentifiers
+@_exported import VideoIDSDK
+import VideoToolbox
+import Vision
+import WebRTC
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import os
+import zlib
+public enum SecurityErrorCode : Swift.UInt16 {
+  case acceptFailed
+  case pinningFailed
+  public init?(rawValue: Swift.UInt16)
+  public typealias RawValue = Swift.UInt16
+  public var rawValue: Swift.UInt16 {
+    get
+  }
+}
+public enum PinningState {
+  case success
+  case failed(CoreFoundation.CFError?)
+}
+public protocol CertificatePinning : AnyObject {
+  func evaluateTrust(trust: Security.SecTrust, domain: Swift.String?, completion: (VideoIDSDK.PinningState) -> ())
+}
+public protocol HeaderValidator : AnyObject {
+  func validate(headers: [Swift.String : Swift.String], key: Swift.String) -> (any Swift.Error)?
+}
+@_hasMissingDesignatedInitializers public class Style {
+  public struct Preview {
+    public static var color: UIKit.UIColor
+  }
+  public struct Spinner {
+    public static var color: UIKit.UIColor
+  }
+  public struct StatusLabel {
+    public static var textColor: UIKit.UIColor
+    public static func apply(to label: UIKit.UILabel)
+  }
+  public struct CloseButton {
+    public static var icon: UIKit.UIImage?
+    public static func apply(to button: UIKit.UIButton)
+  }
+  public struct CloseGreyButton {
+    public static var icon: UIKit.UIImage?
+    public static func apply(to button: UIKit.UIButton)
+  }
+  public struct Margins {
+    public static let regularTop: CoreFoundation.CGFloat
+  }
+  public struct ConfirmationButton {
+    public static var backgroundColorNormal: UIKit.UIColor
+    public static var backgroundColorHighlighted: UIKit.UIColor
+    public static var backgroundColorDisabled: UIKit.UIColor
+    public static var textColorNormal: UIKit.UIColor
+    public static var textColorHighlighted: UIKit.UIColor
+    public static var textColorDisabled: UIKit.UIColor
+    public static var textFont: UIKit.UIFont?
+    public static var cornerRadius: CoreFoundation.CGFloat
+    public static var height: CoreFoundation.CGFloat
+    public static func apply(to button: UIKit.UIButton)
+  }
+  public struct LinkButton {
+    public static var backgroundColorNormal: UIKit.UIColor
+    public static var backgroundColorHighlighted: UIKit.UIColor
+    public static var backgroundColorDisabled: UIKit.UIColor
+    public static var textColorNormal: UIKit.UIColor
+    public static var textColorHighlighted: UIKit.UIColor
+    public static var textColorDisabled: UIKit.UIColor
+    public static var textFont: UIKit.UIFont?
+    public static var cornerRadius: CoreFoundation.CGFloat
+    public static var height: CoreFoundation.CGFloat
+    public static func apply(to button: UIKit.UIButton)
+  }
+  public struct HoloLinkButton {
+    public static var backgroundColorNormal: UIKit.UIColor
+    public static var backgroundColorHighlighted: UIKit.UIColor
+    public static var backgroundColorDisabled: UIKit.UIColor
+    public static var textColorNormal: UIKit.UIColor
+    public static var textColorHighlighted: UIKit.UIColor
+    public static var textColorDisabled: UIKit.UIColor
+    public static var textFont: UIKit.UIFont?
+    public static var cornerRadius: CoreFoundation.CGFloat
+    public static var height: CoreFoundation.CGFloat
+    public static func apply(to button: UIKit.UIButton)
+  }
+  public struct AccessoryButton {
+    public static var backgroundColorNormal: UIKit.UIColor
+    public static var backgroundColorHighlighted: UIKit.UIColor
+    public static var backgroundColorDisabled: UIKit.UIColor
+    public static var textColorNormal: UIKit.UIColor
+    public static var textColorHighlighted: UIKit.UIColor
+    public static var textColorDisabled: UIKit.UIColor
+    public static var textFont: UIKit.UIFont?
+    public static var placeholderTextColor: UIKit.UIColor
+    public static var placeholderTextFont: UIKit.UIFont?
+    public static var cornerRadius: CoreFoundation.CGFloat
+    public static var borderWidthNormal: CoreFoundation.CGFloat
+    public static var borderWidthHighlighted: CoreFoundation.CGFloat
+    public static var borderWidthDisabled: CoreFoundation.CGFloat
+    public static var borderColorNormal: UIKit.UIColor
+    public static var borderColorHighlighted: UIKit.UIColor
+    public static var borderColorDisabled: UIKit.UIColor
+    public static var height: CoreFoundation.CGFloat
+    public static func apply(to button: UIKit.UIButton)
+  }
+  public struct BorderedButton {
+    public static var backgroundColorNormal: UIKit.UIColor
+    public static var backgroundColorHighlighted: UIKit.UIColor
+    public static var backgroundColorDisabled: UIKit.UIColor
+    public static var textColorNormal: UIKit.UIColor
+    public static var textColorHighlighted: UIKit.UIColor
+    public static var textColorDisabled: UIKit.UIColor
+    public static var textFont: UIKit.UIFont?
+    public static var height: CoreFoundation.CGFloat
+    public static var cornerRadius: CoreFoundation.CGFloat
+    public static var borderColor: UIKit.UIColor
+    public static var borderWidth: CoreFoundation.CGFloat
+    public static func apply(to button: UIKit.UIButton)
+  }
+  public struct PlainButton {
+    public static var backgroundColorNormal: UIKit.UIColor
+    public static var backgroundColorHighlighted: UIKit.UIColor
+    public static var backgroundColorDisabled: UIKit.UIColor
+    public static var textColorNormal: UIKit.UIColor
+    public static var textColorHighlighted: UIKit.UIColor
+    public static var textColorDisabled: UIKit.UIColor
+    public static var textFont: UIKit.UIFont?
+    public static var height: CoreFoundation.CGFloat
+    public static var cornerRadius: CoreFoundation.CGFloat
+    public static var borderColor: UIKit.UIColor
+    public static var borderWidth: CoreFoundation.CGFloat
+    public static func apply(to button: UIKit.UIButton)
+  }
+  public struct WhiteTextField {
+    public static var backgroundColor: UIKit.UIColor
+    public static var borderColor: UIKit.UIColor
+    public static var borderWidthNormal: CoreFoundation.CGFloat
+    public static var borderWidthHighlighted: CoreFoundation.CGFloat
+    public static var textFont: UIKit.UIFont?
+    public static var textColor: UIKit.UIColor
+    public static var placeholderFont: UIKit.UIFont?
+    public static var placeholderColor: UIKit.UIColor
+    public static var height: CoreFoundation.CGFloat
+    public static var cornerRadius: CoreFoundation.CGFloat
+    public static func apply(to textField: UIKit.UITextField)
+  }
+  public struct SingleChatWhiteTextField {
+    public static var backgroundColor: UIKit.UIColor
+    public static var borderColor: UIKit.UIColor
+    public static var borderWidthNormal: CoreFoundation.CGFloat
+    public static var borderWidthHighlighted: CoreFoundation.CGFloat
+    public static var textFont: UIKit.UIFont?
+    public static var textColor: UIKit.UIColor
+    public static var height: CoreFoundation.CGFloat
+    public static var width: CoreFoundation.CGFloat
+    public static var cornerRadius: CoreFoundation.CGFloat
+    public static func apply(to textField: UIKit.UITextField)
+  }
+  public struct SearchTextField {
+    public static var searchIcon: UIKit.UIImage?
+    public static var placeholderFont: UIKit.UIFont?
+    public static var placeholderTextColor: UIKit.UIColor
+    public static var textFont: UIKit.UIFont?
+    public static var textColor: UIKit.UIColor
+    public static func apply(to textField: UIKit.UITextField)
+  }
+  public struct ItemsList {
+    public static var backgroundColor: UIKit.UIColor
+    public static var closeIcon: UIKit.UIImage?
+    public static var separatorLineColor: UIKit.UIColor
+    public static var itemsBackgroundColor: UIKit.UIColor
+    public static var itemsSelectedBackgroundColor: UIKit.UIColor
+    public static var itemsTextFont: UIKit.UIFont?
+    public static var itemsTextColor: UIKit.UIColor
+  }
+  public struct Roi {
+    public static var backgroundColor: UIKit.UIColor
+    public static var linesColor: UIKit.UIColor
+    public static var linesColorSuccess: UIKit.UIColor
+    public static var linesColorError: UIKit.UIColor
+    public static var linesColorWarning: UIKit.UIColor
+    public static var linesWidth: CoreFoundation.CGFloat
+    public static var textFont: UIKit.UIFont?
+    public static var textColor: UIKit.UIColor
+  }
+  public struct Highlight {
+    public static var linesColorNormal: UIKit.UIColor
+    public static var linesColorSuccess: UIKit.UIColor
+    public static var linesColorWarning: UIKit.UIColor
+    public static var linesColorError: UIKit.UIColor
+    public static var linesWidth: CoreFoundation.CGFloat
+    public static var highlightWidth: CoreFoundation.CGFloat
+  }
+  public struct TextNotification {
+    public static var successImageName: Swift.String
+    public static var alertImageName: Swift.String
+    public static var backgroundColor: UIKit.UIColor
+    public static var textColor: UIKit.UIColor
+    public static var textFont: UIKit.UIFont?
+    public static var successImage: UIKit.UIImage?
+    public static var warningImage: UIKit.UIImage?
+  }
+  public struct WellDoneNotification {
+    public static var backgroundColor: UIKit.UIColor
+    public static var animationBackgroundColor: UIKit.UIColor
+    public static var textFont: UIKit.UIFont?
+    public static var animationSize: CoreFoundation.CGSize
+    public static var textColor: UIKit.UIColor
+    public static var textAlignment: UIKit.NSTextAlignment
+  }
+  public struct CameraPermissionsNotification {
+    public static var backgroundColor: UIKit.UIColor
+    public static var textAlignment: UIKit.NSTextAlignment
+    public static var textFont: UIKit.UIFont?
+    public static var titleFont: UIKit.UIFont?
+    public static var subtitleFont: UIKit.UIFont?
+    public static var textColor: UIKit.UIColor
+    public static var titleColor: UIKit.UIColor
+    public static var subtitleColor: UIKit.UIColor
+  }
+  public struct ProcessRequirementsNotification {
+    public static var backgroundColor: UIKit.UIColor
+    public static var titleFont: UIKit.UIFont?
+    public static var titleTextColor: UIKit.UIColor
+    public static var titleTextAlignment: UIKit.NSTextAlignment
+    public static var itemsFont: UIKit.UIFont?
+    public static var itemsTextColor: UIKit.UIColor
+  }
+  public struct CarouselNotification {
+    public static var backgroundColor: UIKit.UIColor
+    public static var animationBackgroundColor: UIKit.UIColor
+    public static var currentPageIndicatorTintColor: UIKit.UIColor
+    public static var pageIndicatorTintColor: UIKit.UIColor
+    public static var itemFont: UIKit.UIFont?
+    public static var itemTextColor: UIKit.UIColor
+    public static var itemTextAlignment: UIKit.NSTextAlignment
+  }
+  public struct MediaNotification {
+    public static var backgroundColor: UIKit.UIColor
+    public static var titleFont: UIKit.UIFont?
+    public static var textFont: UIKit.UIFont?
+    public static var textColor: UIKit.UIColor
+    public static var textAlignment: UIKit.NSTextAlignment
+    public static var animationBackgroundColor: UIKit.UIColor
+    public static var descriptionTextFont: UIKit.UIFont?
+    public static var checkboxTextFont: UIKit.UIFont?
+    public static var descriptionTextColor: UIKit.UIColor
+    public static var descriptionTextAlignment: UIKit.NSTextAlignment
+  }
+  public struct MediaHologramNotification {
+    public static var backgroundColor: UIKit.UIColor
+    public static var animationBackgroundColor: UIKit.UIColor
+    public static var textFont: UIKit.UIFont?
+    public static var textAlignment: UIKit.NSTextAlignment
+    public static var textColor: UIKit.UIColor
+  }
+  public struct CaptchaNotification {
+    public static var backgroundColor: UIKit.UIColor
+    public static var textFont: UIKit.UIFont?
+    public static var textColor: UIKit.UIColor
+    public static var textAlignment: UIKit.NSTextAlignment
+    public static var retryTextFont: UIKit.UIFont?
+    public static var retryTextColor: UIKit.UIColor
+    public static var retryTextAlignment: UIKit.NSTextAlignment
+  }
+  public struct ErrorNotification {
+    public static var backgroundColor: UIKit.UIColor
+    public static var textFont: UIKit.UIFont?
+    public static var textColor: UIKit.UIColor
+    public static var textAlignment: UIKit.NSTextAlignment
+    public static var descriptionTextFont: UIKit.UIFont?
+    public static var descriptionTextColor: UIKit.UIColor
+    public static var descriptionTextAlignment: UIKit.NSTextAlignment
+    public static var linkTextFont: UIKit.UIFont?
+    public static var linkTextColor: UIKit.UIColor
+    public static var linkTextAlignment: UIKit.NSTextAlignment
+  }
+  public struct WarningNotification {
+    public static var backgroundColor: UIKit.UIColor
+    public static var textFont: UIKit.UIFont?
+    public static var textColor: UIKit.UIColor
+    public static var textAlignment: UIKit.NSTextAlignment
+    public static var descriptionTextFont: UIKit.UIFont?
+    public static var descriptionTextColor: UIKit.UIColor
+    public static var descriptionTextAlignment: UIKit.NSTextAlignment
+  }
+  public struct DocumentSelectionNotification {
+    public static var backgroundColor: UIKit.UIColor
+    public static var titleTextFont: UIKit.UIFont?
+    public static var titleTextColor: UIKit.UIColor
+    public static var titleTextAlignment: UIKit.NSTextAlignment
+    public static var descriptionTextFont: UIKit.UIFont?
+    public static var descriptionTextColor: UIKit.UIColor
+    public static var descriptionTextAlignment: UIKit.NSTextAlignment
+    public static var countryTextFont: UIKit.UIFont?
+    public static var countryTextColor: UIKit.UIColor
+    public static var countryTextAlignment: UIKit.NSTextAlignment
+    public static var documentTextFont: UIKit.UIFont?
+    public static var documentTextColor: UIKit.UIColor
+    public static var documentTextAlignment: UIKit.NSTextAlignment
+    public static var infoImage: UIKit.UIImage?
+  }
+  public struct PhoneRequestNotification {
+    public static var backgroundColor: UIKit.UIColor
+    public static var titleTextFont: UIKit.UIFont?
+    public static var titleTextColor: UIKit.UIColor
+    public static var titleTextAlignment: UIKit.NSTextAlignment
+    public static var descriptionTextFont: UIKit.UIFont?
+    public static var descriptionTextColor: UIKit.UIColor
+    public static var descriptionTextAlignment: UIKit.NSTextAlignment
+    public static var infoImage: UIKit.UIImage?
+  }
+  public struct Commons {
+    public static var screenBackgroundColor: UIKit.UIColor
+    public static var mainBackgroundColor: UIKit.UIColor
+    public static var mainGrayBackgroundColor: UIKit.UIColor
+    public static var supportThemes: Swift.Bool
+  }
+  @objc deinit
+}
+extension UIKit.UIView {
+  @_Concurrency.MainActor @preconcurrency public func removeAllConstraints()
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class CustomPhoneRequestViewController : VideoIDSDK.CustomNotificationViewController<VideoIDSDK.PhoneRequestNotification> {
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.PhoneRequestNotification, nibName: Swift.String)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.PhoneRequestNotification)
+  @objc deinit
+}
+public class FoundationHTTPHandler : VideoIDSDK.HTTPHandler {
+  public init()
+  public func convert(request: Foundation.URLRequest) -> Foundation.Data
+  public func parse(data: Foundation.Data) -> Swift.Int
+  public func register(delegate: any VideoIDSDK.HTTPHandlerDelegate)
+  @objc deinit
+}
+public struct DocumentSelectionNotification {
+  public let name: Swift.String?
+  public var title: Swift.String?
+  public var subtitle: Swift.String?
+  public var description: Swift.String?
+  public var selector: Swift.String?
+  public var idTypes: [VideoIDSDK.IdType]?
+  public var countries: [VideoIDSDK.Country]?
+  public var countrySelector: Swift.String?
+  public var documentSelectorText: Swift.String?
+  public var actionText: Swift.String?
+  public var previousText: Swift.String?
+  public var previous: (() -> ())?
+  public var actionCountry: ((_ country: Swift.String?) -> ())?
+  public var action: ((_ idtype: Swift.Int?) -> ())?
+}
+public protocol CompressionHandler {
+  func load(headers: [Swift.String : Swift.String])
+  func decompress(data: Foundation.Data, isFinal: Swift.Bool) -> Foundation.Data?
+  func compress(data: Foundation.Data) -> Foundation.Data?
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class EidSpinner : UIKit.UIView {
+  @_Concurrency.MainActor @preconcurrency public class var sharedInstance: VideoIDSDK.EidSpinner {
+    get
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func hitTest(_ point: CoreFoundation.CGPoint, with event: UIKit.UIEvent?) -> UIKit.UIView?
+  @_Concurrency.MainActor @preconcurrency public var titleLabel: UIKit.UILabel {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var subtitleLabel: UIKit.UILabel?
+  @_Concurrency.MainActor @preconcurrency public var outerColor: UIKit.UIColor? {
+    get
+    set(newColor)
+  }
+  @_Concurrency.MainActor @preconcurrency public var innerColor: UIKit.UIColor? {
+    get
+    set(newColor)
+  }
+  @_Concurrency.MainActor @preconcurrency public var newColor: UIKit.UIColor? {
+    get
+    set(newColor)
+  }
+  @_Concurrency.MainActor @preconcurrency public class func useContainerView(_ sv: UIKit.UIView?)
+  @discardableResult
+  @_Concurrency.MainActor @preconcurrency public class func show(_ title: Swift.String, animated: Swift.Bool = true) -> VideoIDSDK.EidSpinner
+  @discardableResult
+  @_Concurrency.MainActor @preconcurrency public class func show(duration: Swift.Double, title: Swift.String, animated: Swift.Bool = true) -> VideoIDSDK.EidSpinner
+  @_Concurrency.MainActor @preconcurrency public class func show(delay: Swift.Double, title: Swift.String, animated: Swift.Bool = true)
+  @discardableResult
+  @_Concurrency.MainActor @preconcurrency public class func show(progress: Swift.Double, title: Swift.String) -> VideoIDSDK.EidSpinner
+  @_Concurrency.MainActor @preconcurrency public static var hideCancelsScheduledSpinners: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public class func hide(_ completion: (() -> Swift.Void)? = nil)
+  @_Concurrency.MainActor @preconcurrency public class func setTitleFont(_ font: UIKit.UIFont?)
+  @_Concurrency.MainActor @preconcurrency public class func setTitleColor(_ color: UIKit.UIColor?)
+  @_Concurrency.MainActor @preconcurrency public var title: Swift.String {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var frame: CoreFoundation.CGRect {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency public var animating: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public func addTapHandler(_ tap: @escaping () -> (), subtitle subtitleText: Swift.String? = nil)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor @preconcurrency public func clearTapHandler()
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc @_Concurrency.MainActor @preconcurrency public func updateFrame()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor @preconcurrency public func starting()
+  @_Concurrency.MainActor @preconcurrency public func loading()
+  @_Concurrency.MainActor @preconcurrency public func stop()
+  @_Concurrency.MainActor @preconcurrency public func set(color: UIKit.UIColor)
+  @objc deinit
+}
+public struct CaptchaOTPNotification {
+  public let name: Swift.String?
+  public let title: Swift.String?
+  public let description: Swift.String?
+  public let phoneUpdate: Swift.String?
+  public let audioUrl: Foundation.URL?
+  public let length: Swift.Int?
+  public let charset: VideoIDSDK.TextInputType?
+  public let action1Text: Swift.String?
+  public let action2Text: Swift.String?
+  public var action1: ((_ phone: Swift.String?) -> ())?
+  public var action2: (() -> ())?
+}
+public struct CameraPermissionRequestNotification {
+  public let title: Swift.String?
+  public let subtitle: Swift.String?
+  public let name: Swift.String?
+  public var description: Swift.String?
+  public var audioUrl: Foundation.URL?
+  public let imageURL: Foundation.URL?
+  public var actionText: Swift.String?
+  public var action: (() -> ())?
+}
+@_hasMissingDesignatedInitializers final public class AccessibleStyles {
+  public static func loadFonts()
+  @objc deinit
+}
+public struct WellDoneNotification {
+  public let name: Swift.String?
+  public var text: Swift.String?
+  public var audioUrl: Foundation.URL?
+  public var animationUrl: Foundation.URL?
+  public var ttl: Swift.Int?
+  public var ack: Swift.Bool?
+  public var acknowledgeAction: (() -> ())?
+}
+public struct TextNotification {
+  public let name: Swift.String?
+  public let description: Swift.String?
+  public let level: VideoIDSDK.NotificationLevel?
+  public let ttl: Swift.Int?
+  public let audioUrl: Foundation.URL?
+  public let ack: (() -> ())?
+  public let icon: Swift.String?
+  public let animationURL: Foundation.URL?
+}
+public struct ROIShow {
+}
+public class WSEngine : VideoIDSDK.Engine, VideoIDSDK.TransportEventClient, VideoIDSDK.FramerEventClient, VideoIDSDK.FrameCollectorDelegate, VideoIDSDK.HTTPHandlerDelegate {
+  public var respondToPingWithPong: Swift.Bool
+  public init(transport: any VideoIDSDK.Transport, certPinner: (any VideoIDSDK.CertificatePinning)? = nil, headerValidator: any VideoIDSDK.HeaderValidator = FoundationSecurity(), httpHandler: any VideoIDSDK.HTTPHandler = FoundationHTTPHandler(), framer: any VideoIDSDK.Framer = WSFramer(), compressionHandler: (any VideoIDSDK.CompressionHandler)? = nil)
+  public func register(delegate: any VideoIDSDK.EngineDelegate)
+  public func start(request: Foundation.URLRequest)
+  public func stop(closeCode: Swift.UInt16 = CloseCode.normal.rawValue)
+  public func forceStop()
+  public func write(string: Swift.String, completion: (() -> ())?)
+  public func write(data: Foundation.Data, opcode: VideoIDSDK.FrameOpCode, completion: (() -> ())?)
+  public func connectionChanged(state: VideoIDSDK.ConnectionState)
+  public func didReceiveHTTP(event: VideoIDSDK.HTTPEvent)
+  public func frameProcessed(event: VideoIDSDK.FrameEvent)
+  public func decompress(data: Foundation.Data, isFinal: Swift.Bool) -> Foundation.Data?
+  public func didForm(event: VideoIDSDK.FrameCollector.Event)
+  @objc deinit
+}
+public enum ConnectionEvent {
+  case connected([Swift.String : Swift.String])
+  case disconnected(Swift.String, Swift.UInt16)
+  case text(Swift.String)
+  case binary(Foundation.Data)
+  case pong(Foundation.Data?)
+  case ping(Foundation.Data?)
+  case error(any Swift.Error)
+}
+public protocol Connection {
+  func write(data: Foundation.Data, opcode: VideoIDSDK.FrameOpCode)
+}
+public protocol ConnectionDelegate : AnyObject {
+  func didReceive(event: VideoIDSDK.ServerEvent)
+}
+public enum ServerEvent {
+  case connected(any VideoIDSDK.Connection, [Swift.String : Swift.String])
+  case disconnected(any VideoIDSDK.Connection, Swift.String, Swift.UInt16)
+  case text(any VideoIDSDK.Connection, Swift.String)
+  case binary(any VideoIDSDK.Connection, Foundation.Data)
+  case pong(any VideoIDSDK.Connection, Foundation.Data?)
+  case ping(any VideoIDSDK.Connection, Foundation.Data?)
+}
+public protocol Server {
+  func start(address: Swift.String, port: Swift.UInt16) -> (any Swift.Error)?
+}
+public enum TCPTransportError : Swift.Error {
+  case invalidRequest
+  public static func == (a: VideoIDSDK.TCPTransportError, b: VideoIDSDK.TCPTransportError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(macOS 10.14, iOS 12.0, watchOS 5.0, tvOS 12.0, *)
+public class TCPTransport : VideoIDSDK.Transport {
+  public var usingTLS: Swift.Bool {
+    get
+  }
+  public init(connection: Network.NWConnection)
+  public init()
+  public func connect(url: Foundation.URL, timeout: Swift.Double = 10, certificatePinning: (any VideoIDSDK.CertificatePinning)? = nil)
+  public func disconnect()
+  public func register(delegate: any VideoIDSDK.TransportEventClient)
+  public func write(data: Foundation.Data, completion: @escaping ((any Swift.Error)?) -> ())
+  @objc deinit
+}
+public protocol FrameCollectorDelegate : AnyObject {
+  func didForm(event: VideoIDSDK.FrameCollector.Event)
+  func decompress(data: Foundation.Data, isFinal: Swift.Bool) -> Foundation.Data?
+}
+@_hasMissingDesignatedInitializers public class FrameCollector {
+  public enum Event {
+    case text(Swift.String)
+    case binary(Foundation.Data)
+    case pong(Foundation.Data?)
+    case ping(Foundation.Data?)
+    case error(any Swift.Error)
+    case closed(Swift.String, Swift.UInt16)
+  }
+  public func add(frame: VideoIDSDK.Frame)
+  @objc deinit
+}
+public enum FoundationSecurityError : Swift.Error {
+  case invalidRequest
+  public static func == (a: VideoIDSDK.FoundationSecurityError, b: VideoIDSDK.FoundationSecurityError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public class FoundationSecurity {
+  public init(allowSelfSigned: Swift.Bool = false)
+  @objc deinit
+}
+extension VideoIDSDK.FoundationSecurity : VideoIDSDK.CertificatePinning {
+  public func evaluateTrust(trust: Security.SecTrust, domain: Swift.String?, completion: (VideoIDSDK.PinningState) -> ())
+}
+extension VideoIDSDK.FoundationSecurity : VideoIDSDK.HeaderValidator {
+  public func validate(headers: [Swift.String : Swift.String], key: Swift.String) -> (any Swift.Error)?
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor @preconcurrency open class CheckBox : UIKit.UIControl {
+  public enum Style {
+    case square
+    case circle
+    case cross
+    case tick
+    public static func == (a: VideoIDSDK.CheckBox.Style, b: VideoIDSDK.CheckBox.Style) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum BorderStyle {
+    case square
+    case roundedSquare(radius: CoreFoundation.CGFloat)
+    case rounded
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var intrinsicContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func touchesEnded(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func draw(_ rect: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func prepareForInterfaceBuilder()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func point(inside point: CoreFoundation.CGPoint, with event: UIKit.UIEvent?) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var isAccessibilityElement: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var accessibilityLabel: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var accessibilityTraits: UIKit.UIAccessibilityTraits {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var accessibilityValue: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func accessibilityActivate() -> Swift.Bool
+  @objc deinit
+}
+public struct SpinnerNotification {
+  public let name: Swift.String?
+  public let description: Swift.String?
+}
+@_hasMissingDesignatedInitializers public class FoundationHTTPServerHandler : VideoIDSDK.HTTPServerHandler {
+  public func register(delegate: any VideoIDSDK.HTTPServerDelegate)
+  public func createResponse(headers: [Swift.String : Swift.String]) -> Foundation.Data
+  public func parse(data: Foundation.Data)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+public class NativeEngine : ObjectiveC.NSObject, VideoIDSDK.Engine, Foundation.URLSessionDataDelegate, Foundation.URLSessionWebSocketDelegate {
+  public func register(delegate: any VideoIDSDK.EngineDelegate)
+  public func start(request: Foundation.URLRequest)
+  public func stop(closeCode: Swift.UInt16)
+  public func forceStop()
+  public func write(string: Swift.String, completion: (() -> ())?)
+  public func write(data: Foundation.Data, opcode: VideoIDSDK.FrameOpCode, completion: (() -> ())?)
+  @objc public func urlSession(_ session: Foundation.URLSession, webSocketTask: Foundation.URLSessionWebSocketTask, didOpenWithProtocol protocol: Swift.String?)
+  @objc public func urlSession(_ session: Foundation.URLSession, webSocketTask: Foundation.URLSessionWebSocketTask, didCloseWith closeCode: Foundation.URLSessionWebSocketTask.CloseCode, reason: Foundation.Data?)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class AnimationManager {
+  public static func lottieView(url: Foundation.URL) -> some SwiftUICore.View
+  
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class GetVideoIDAuthorizationInteractor : VideoIDSDK.GetAuthorizationInteractorImp {
+  override public func getAuthorizationFor(endpoint: Swift.String, bearer: Swift.String, rAuthority: Swift.String, externalReference: Swift.String? = nil, phoneNumber: Swift.String? = nil, onResult: @escaping (Swift.String?) -> Swift.Void, onError: @escaping (VideoIDSDK.VideoIDError?) -> Swift.Void)
+  override public init()
+  @objc deinit
+}
+@objc public protocol VideoIDDelegate {
+  @objc func onComplete(videoID: Swift.String)
+  @objc optional func onError(_ error: VideoIDSDK.VideoIDError)
+  @objc optional func onError(code: Swift.String, message: Swift.String?)
+}
+public enum FoundationTransportError : Swift.Error {
+  case invalidRequest
+  case invalidOutputStream
+  case timeout
+  public static func == (a: VideoIDSDK.FoundationTransportError, b: VideoIDSDK.FoundationTransportError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc public class FoundationTransport : ObjectiveC.NSObject, VideoIDSDK.Transport, Foundation.StreamDelegate {
+  public var usingTLS: Swift.Bool {
+    get
+  }
+  public init(streamConfiguration: ((Foundation.InputStream, Foundation.OutputStream) -> Swift.Void)? = nil)
+  @objc deinit
+  public func connect(url: Foundation.URL, timeout: Swift.Double = 10, certificatePinning: (any VideoIDSDK.CertificatePinning)? = nil)
+  public func disconnect()
+  public func register(delegate: any VideoIDSDK.TransportEventClient)
+  public func write(data: Foundation.Data, completion: @escaping ((any Swift.Error)?) -> ())
+  @objc open func stream(_ aStream: Foundation.Stream, handle eventCode: Foundation.Stream.Event)
+}
+@_inheritsConvenienceInitializers @objc public class CheckRequirements : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc public func check(url: Swift.String, service: VideoIDSDK.VideoService, eager: Swift.Bool = false, onComplete: @escaping (VideoIDSDK.CheckResult) -> ())
+  @objc deinit
+}
+public struct HighlightsShowEvent {
+}
+public struct Highlight {
+}
+public struct WarningNotification {
+  public let name: Swift.String?
+  public let title: Swift.String?
+  public let description: Swift.String?
+  public let audioUrl: Foundation.URL?
+  public let imageURL: Foundation.URL?
+  public let action1Text: Swift.String?
+  public let action2Text: Swift.String?
+  public let action3Text: Swift.String?
+  public let closeText: Swift.String?
+  public var action1: (() -> ())?
+  public var action2: (() -> ())?
+  public var action3: (() -> ())?
+}
+@objc @_Concurrency.MainActor @preconcurrency open class CustomCaptchaOTPViewController : VideoIDSDK.CaptchaDynamicViewController {
+  @_Concurrency.MainActor @preconcurrency final public let notification: VideoIDSDK.CaptchaOTPNotification
+  @_Concurrency.MainActor @preconcurrency public init(notification: VideoIDSDK.CaptchaOTPNotification)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+public class WSCompression : VideoIDSDK.CompressionHandler {
+  public init()
+  public func load(headers: [Swift.String : Swift.String])
+  public func decompress(data: Foundation.Data, isFinal: Swift.Bool) -> Foundation.Data?
+  public func compress(data: Foundation.Data) -> Foundation.Data?
+  @objc deinit
+}
+public class Ack : Swift.Encodable {
+  public init(videoId: Swift.String? = "", notificationId: Swift.String? = "", input: Swift.String? = "")
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public enum ErrorType : Swift.Error {
+  case compressionError
+  case securityError
+  case protocolError
+  case serverError
+  public static func == (a: VideoIDSDK.ErrorType, b: VideoIDSDK.ErrorType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct WSError : Swift.Error {
+  public let type: VideoIDSDK.ErrorType
+  public let message: Swift.String
+  public let code: Swift.UInt16
+  public init(type: VideoIDSDK.ErrorType, message: Swift.String, code: Swift.UInt16)
+}
+public protocol WebSocketClient : AnyObject {
+  func connect()
+  func disconnect(closeCode: Swift.UInt16)
+  func write(string: Swift.String, completion: (() -> ())?)
+  func write(stringData: Foundation.Data, completion: (() -> ())?)
+  func write(data: Foundation.Data, completion: (() -> ())?)
+  func write(ping: Foundation.Data, completion: (() -> ())?)
+  func write(pong: Foundation.Data, completion: (() -> ())?)
+}
+extension VideoIDSDK.WebSocketClient {
+  public func write(string: Swift.String)
+  public func write(data: Foundation.Data)
+  public func write(ping: Foundation.Data)
+  public func write(pong: Foundation.Data)
+  public func disconnect()
+}
+public enum WebSocketEvent {
+  case connected([Swift.String : Swift.String])
+  case disconnected(Swift.String, Swift.UInt16)
+  case text(Swift.String)
+  case binary(Foundation.Data)
+  case pong(Foundation.Data?)
+  case ping(Foundation.Data?)
+  case error((any Swift.Error)?)
+  case viabilityChanged(Swift.Bool)
+  case reconnectSuggested(Swift.Bool)
+  case cancelled
+}
+public protocol WebSocketDelegate : AnyObject {
+  func didReceive(event: VideoIDSDK.WebSocketEvent, client: VideoIDSDK.WebSocket)
+}
+open class WebSocket : VideoIDSDK.WebSocketClient, VideoIDSDK.EngineDelegate {
+  weak public var delegate: (any VideoIDSDK.WebSocketDelegate)?
+  public var onEvent: ((VideoIDSDK.WebSocketEvent) -> Swift.Void)?
+  public var request: Foundation.URLRequest
+  public var cookies: [Foundation.HTTPCookie]?
+  public var callbackQueue: Dispatch.DispatchQueue
+  public var respondToPingWithPong: Swift.Bool {
+    get
+    set
+  }
+  public init(request: Foundation.URLRequest, engine: any VideoIDSDK.Engine)
+  convenience public init(request: Foundation.URLRequest, certPinner: (any VideoIDSDK.CertificatePinning)? = FoundationSecurity(), compressionHandler: (any VideoIDSDK.CompressionHandler)? = nil, useCustomEngine: Swift.Bool = true)
+  public func connect()
+  public func disconnect(closeCode: Swift.UInt16 = CloseCode.normal.rawValue)
+  public func forceDisconnect()
+  public func write(data: Foundation.Data, completion: (() -> ())?)
+  public func write(string: Swift.String, completion: (() -> ())?)
+  public func write(stringData: Foundation.Data, completion: (() -> ())?)
+  public func write(ping: Foundation.Data, completion: (() -> ())?)
+  public func write(pong: Foundation.Data, completion: (() -> ())?)
+  public func didReceive(event: VideoIDSDK.WebSocketEvent)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class GetConferenceIDAuthorizationInteractor : VideoIDSDK.GetAuthorizationInteractorImp {
+  override public func getAuthorizationFor(endpoint: Swift.String, bearer: Swift.String, rAuthority: Swift.String, externalReference: Swift.String? = nil, phoneNumber: Swift.String? = nil, onResult: @escaping (Swift.String?) -> Swift.Void, onError: @escaping (VideoIDSDK.VideoIDError?) -> Swift.Void)
+  override public init()
+  @objc deinit
+}
+public enum CloseCode : Swift.UInt16 {
+  case normal
+  case goingAway
+  case protocolError
+  case protocolUnhandledType
+  case noStatusReceived
+  case encoding
+  case policyViolated
+  case messageTooBig
+  public init?(rawValue: Swift.UInt16)
+  public typealias RawValue = Swift.UInt16
+  public var rawValue: Swift.UInt16 {
+    get
+  }
+}
+public enum FrameOpCode : Swift.UInt8 {
+  case continueFrame
+  case textFrame
+  case binaryFrame
+  case connectionClose
+  case ping
+  case pong
+  case unknown
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+public struct Frame {
+}
+public enum FrameEvent {
+  case frame(VideoIDSDK.Frame)
+  case error(any Swift.Error)
+}
+public protocol FramerEventClient : AnyObject {
+  func frameProcessed(event: VideoIDSDK.FrameEvent)
+}
+public protocol Framer {
+  func add(data: Foundation.Data)
+  func register(delegate: any VideoIDSDK.FramerEventClient)
+  func createWriteFrame(opcode: VideoIDSDK.FrameOpCode, payload: Foundation.Data, isCompressed: Swift.Bool) -> Foundation.Data
+  func updateCompression(supports: Swift.Bool)
+  func supportsCompression() -> Swift.Bool
+}
+public class WSFramer : VideoIDSDK.Framer {
+  public var compressionEnabled: Swift.Bool
+  public init(isServer: Swift.Bool = false)
+  public func updateCompression(supports: Swift.Bool)
+  public func supportsCompression() -> Swift.Bool
+  public func add(data: Foundation.Data)
+  public func register(delegate: any VideoIDSDK.FramerEventClient)
+  public func createWriteFrame(opcode: VideoIDSDK.FrameOpCode, payload: Foundation.Data, isCompressed: Swift.Bool) -> Foundation.Data
+  @objc deinit
+}
+public protocol MyWSArrayType {
+}
+extension Swift.UInt8 : VideoIDSDK.MyWSArrayType {
+}
+extension Swift.Array where Element : Swift.UnsignedInteger, Element : VideoIDSDK.MyWSArrayType {
+  public func readUint16(offset: Swift.Int) -> Swift.UInt16
+  public func readUint64(offset: Swift.Int) -> Swift.UInt64
+  public func unmaskData(maskStart: Swift.Int, offset: Swift.Int, length: Swift.Int) -> Foundation.Data
+}
+public func writeUint16(_ buffer: inout [Swift.UInt8], offset: Swift.Int, value: Swift.UInt16)
+public func writeUint32(_ buffer: inout [Swift.UInt8], offset: Swift.Int, value: Swift.UInt32)
+public func writeUint64(_ buffer: inout [Swift.UInt8], offset: Swift.Int, value: Swift.UInt64)
+@_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class CustomDocumentSelectionNotificationViewController : VideoIDSDK.CustomNotificationViewController<VideoIDSDK.DocumentSelectionNotification> {
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.DocumentSelectionNotification, nibName: Swift.String)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.DocumentSelectionNotification)
+  @objc deinit
+}
+public enum HTTPUpgradeError : Swift.Error {
+  case notAnUpgrade(Swift.Int)
+  case invalidData
+}
+public struct HTTPWSHeader {
+  public static func createUpgrade(request: Foundation.URLRequest, supportsCompression: Swift.Bool, secKeyValue: Swift.String) -> Foundation.URLRequest
+  public static func generateWebSocketKey() -> Swift.String
+}
+public enum HTTPEvent {
+  case success([Swift.String : Swift.String])
+  case failure(any Swift.Error)
+}
+public protocol HTTPHandlerDelegate : AnyObject {
+  func didReceiveHTTP(event: VideoIDSDK.HTTPEvent)
+}
+public protocol HTTPHandler {
+  func register(delegate: any VideoIDSDK.HTTPHandlerDelegate)
+  func convert(request: Foundation.URLRequest) -> Foundation.Data
+  func parse(data: Foundation.Data) -> Swift.Int
+}
+public protocol HTTPServerDelegate : AnyObject {
+  func didReceive(event: VideoIDSDK.HTTPEvent)
+}
+public protocol HTTPServerHandler {
+  func register(delegate: any VideoIDSDK.HTTPServerDelegate)
+  func parse(data: Foundation.Data)
+  func createResponse(headers: [Swift.String : Swift.String]) -> Foundation.Data
+}
+public struct URLParts {
+}
+extension Foundation.URL {
+  public var isTLSScheme: Swift.Bool {
+    get
+  }
+  public func getParts() -> VideoIDSDK.URLParts?
+}
+public class StringHTTPHandler : VideoIDSDK.HTTPHandler {
+  public init()
+  public func convert(request: Foundation.URLRequest) -> Foundation.Data
+  public func parse(data: Foundation.Data) -> Swift.Int
+  public func register(delegate: any VideoIDSDK.HTTPHandlerDelegate)
+  @objc deinit
+}
+public enum DocumentType : Swift.String, Swift.Decodable {
+  case idCard
+  case passport
+  case driverLicense
+  case visa
+  case face
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension UIKit.UIImageView {
+  @_Concurrency.MainActor @preconcurrency public func loadGif(name: Swift.String)
+  @available(iOS 9.0, *)
+  @_Concurrency.MainActor @preconcurrency public func loadGif(asset: Swift.String)
+}
+extension UIKit.UIImage {
+  public class func gif(data: Foundation.Data) -> UIKit.UIImage?
+  public class func gif(url: Swift.String) -> UIKit.UIImage?
+  public class func gif(name: Swift.String) -> UIKit.UIImage?
+  @available(iOS 9.0, *)
+  public class func gif(asset: Swift.String) -> UIKit.UIImage?
+}
+public struct IntroViewNotification {
+  public let name: Swift.String?
+  public var title: Swift.String?
+  public var subtitle: Swift.String?
+  public var audioUrl: Foundation.URL?
+  public var alertBanner: [VideoIDSDK.NotificationOthersList]?
+  public var steps: [Swift.String]?
+  public var actionText: Swift.String?
+  public var action1: (() -> ())?
+}
+public struct ErrorNotification {
+  public let name: Swift.String?
+  public let title: Swift.String?
+  public let description: Swift.String?
+  public let footerText: Swift.String?
+  public let audioUrl: Foundation.URL?
+  public let imageURL: Foundation.URL?
+  public let action1Text: Swift.String?
+  public let closeText: Swift.String?
+  public let footerActionText: Swift.String?
+  public var action1: (() -> ())?
+  public var footerAction: (() -> ())?
+  public var timerButtonValue: Swift.Int?
+  public var timerButtonText: Swift.String?
+}
+public struct CaptchaTextNotification {
+  public let name: Swift.String?
+  public let title: Swift.String?
+  public let description: Swift.String?
+  public let audioUrl: Foundation.URL?
+  public let imageUrl: Foundation.URL?
+  public let challenge: Swift.String?
+  public let length: Swift.Int?
+  public let charset: VideoIDSDK.TextInputType?
+  public let action1Text: Swift.String?
+  public var action1: ((_ phone: Swift.String?) -> ())?
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class GetVideoScanAuthorizationInteractor : VideoIDSDK.GetAuthorizationInteractorImp {
+  override public func getAuthorizationFor(endpoint: Swift.String, bearer: Swift.String, rAuthority: Swift.String, externalReference: Swift.String? = nil, phoneNumber: Swift.String? = nil, onResult: @escaping (Swift.String?) -> Swift.Void, onError: @escaping (VideoIDSDK.VideoIDError?) -> Swift.Void)
+  override public init()
+  @objc deinit
+}
+public enum Themes {
+  case catnip
+  case legacy
+  case endUser
+  case custom
+  public static func == (a: VideoIDSDK.Themes, b: VideoIDSDK.Themes) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class UXThemesHandler {
+  public static let shared: VideoIDSDK.UXThemesHandler
+  public var currentTheme: VideoIDSDK.Themes
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class CustomCountrySelectionNotificationViewController : VideoIDSDK.CustomNotificationViewController<VideoIDSDK.CountrySelectionNotification> {
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.CountrySelectionNotification, nibName: Swift.String)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.CountrySelectionNotification)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class CustomMediaNotificationViewController : VideoIDSDK.CustomNotificationViewController<VideoIDSDK.MediaNotification> {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func viewDidLoad()
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.MediaNotification, nibName: Swift.String)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.MediaNotification)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class SynchronizedArray<T> {
+  public func append(_ newElement: T)
+  public func removeAtIndex(index: Swift.Int) -> T?
+  public func itemAtIndex(index: Swift.Int) -> T?
+  public var isEmpty: Swift.Bool {
+    get
+  }
+  public var count: Swift.Int {
+    get
+  }
+  public func first() -> T?
+  public func removeFirst() -> T?
+  public func removeLast() -> T?
+  public func removeAll()
+  public subscript(index: Swift.Int) -> T {
+    get
+    set
+  }
+  @objc deinit
+}
+public enum ConnectionState {
+  case connected
+  case waiting
+  case cancelled
+  case failed((any Swift.Error)?)
+  case viability(Swift.Bool)
+  case shouldReconnect(Swift.Bool)
+  case receive(Foundation.Data)
+}
+public protocol TransportEventClient : AnyObject {
+  func connectionChanged(state: VideoIDSDK.ConnectionState)
+}
+public protocol Transport : AnyObject {
+  func register(delegate: any VideoIDSDK.TransportEventClient)
+  func connect(url: Foundation.URL, timeout: Swift.Double, certificatePinning: (any VideoIDSDK.CertificatePinning)?)
+  func disconnect()
+  func write(data: Foundation.Data, completion: @escaping ((any Swift.Error)?) -> ())
+  var usingTLS: Swift.Bool { get }
+}
+@objc @_Concurrency.MainActor @preconcurrency open class CustomCaptchaTextViewController : VideoIDSDK.CaptchaDynamicViewController {
+  @_Concurrency.MainActor @preconcurrency final public let notification: VideoIDSDK.CaptchaTextNotification
+  @_Concurrency.MainActor @preconcurrency public init(notification: VideoIDSDK.CaptchaTextNotification)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc public enum NotificationLevel : Swift.Int {
+  case normal, warning, error, success, unknown
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public protocol ImageCacheType : AnyObject {
+  func image(for url: Swift.String) -> UIKit.UIImage?
+  func insertImage(_ image: UIKit.UIImage?, for url: Swift.String)
+  func removeImage(for url: Swift.String)
+  func removeAllImages()
+  subscript(url: Swift.String) -> UIKit.UIImage? { get set }
+}
+final public class ImageCache : VideoIDSDK.ImageCacheType {
+  public struct Config {
+    public let countLimit: Swift.Int
+    public let memoryLimit: Swift.Int
+    public static let defaultConfig: VideoIDSDK.ImageCache.Config
+  }
+  public init(config: VideoIDSDK.ImageCache.Config = Config.defaultConfig)
+  final public func image(for url: Swift.String) -> UIKit.UIImage?
+  final public func insertImage(_ image: UIKit.UIImage?, for url: Swift.String)
+  final public func removeImage(for url: Swift.String)
+  final public func removeAllImages()
+  final public subscript(key: Swift.String) -> UIKit.UIImage? {
+    get
+    set
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class NotificationShowEvent : VideoIDSDK.DecodableNotificationEvent<VideoIDSDK.NotificationShowData> {
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class NotificationShowData : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class VideoIDNotification : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class VideoIDNotificationData : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class VideoIDNotificationReading : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class NotificationReadingParams : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class NotificationReadingParamsAccessControl : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class NotificationReadingParamsAccessControlKey : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class NotificationTexts : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class NotificationResources : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class NotificationActions : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class NotificationActionDetail : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class NotificationInputs : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public class CheckboxInput : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class NotificationTextInput : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class NotificationOthers : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public struct IdType : Swift.Codable, Swift.Identifiable {
+  public var id: Swift.Int?
+  public var country: Swift.String?
+  public var countryName: Swift.String?
+  public var type: Swift.String?
+  public var name: Swift.String?
+  public var documentIcon: Swift.String?
+  public var flagIcon: Swift.String?
+  public typealias ID = Swift.Int?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class PhoneCode : Swift.Codable {
+  public var code: Swift.String?
+  public var countryName: Swift.String?
+  public var flagIcon: Swift.String?
+  public var length: Swift.Int?
+  public var minLength: Swift.Int?
+  public var placeholder: Swift.String?
+  public var selected: Swift.Bool?
+  public func title() -> Swift.String
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class NotificationOthersList : Swift.Codable {
+  public var icon: Swift.String?
+  public var number: Swift.String?
+  public var text: Swift.String?
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class TextInput : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@objc public enum TextInputType : Swift.Int {
+  case alphanumeric, numeric, alpha
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum ShapeType : Swift.Int {
+  case rectangle, ellipsis, unknown
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class GetAuthorizationInteractorImp {
+  public init()
+  open func getAuthorizationFor(endpoint: Swift.String, bearer: Swift.String, rAuthority: Swift.String, externalReference: Swift.String? = nil, phoneNumber: Swift.String? = nil, onResult: @escaping (Swift.String?) -> Swift.Void, onError: @escaping (VideoIDSDK.VideoIDError?) -> Swift.Void)
+  @objc deinit
+}
+@objc public class EIDEvent : ObjectiveC.NSObject {
+  open var name: Swift.String
+  open var data: [Swift.String : Any]?
+  @objc public init(name: Swift.String, data: [Swift.String : Any]?)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class GetSmileIDAuthorizationInteractor : VideoIDSDK.GetAuthorizationInteractorImp {
+  override public func getAuthorizationFor(endpoint: Swift.String, bearer: Swift.String, rAuthority: Swift.String, externalReference: Swift.String? = nil, phoneNumber: Swift.String? = nil, onResult: @escaping (Swift.String?) -> Swift.Void, onError: @escaping (VideoIDSDK.VideoIDError?) -> Swift.Void)
+  override public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class DecodableNotificationEvent<T> : Swift.Codable where T : Swift.Decodable, T : Swift.Encodable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public enum NotificationEventType : Swift.String, Swift.Codable {
+  case text, media, carousel, modal, captcha, list, info
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class CustomInfoItemsNotificationViewController : VideoIDSDK.CustomNotificationViewController<VideoIDSDK.InfoItemsNotification> {
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.InfoItemsNotification, nibName: Swift.String)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.InfoItemsNotification)
+  @objc deinit
+}
+public struct PhoneRequestNotification {
+  public let name: Swift.String?
+  public var title: Swift.String?
+  public var description: Swift.String?
+  public var prefixPlaceholder: Swift.String?
+  public var phonePlaceholder: Swift.String?
+  public var audioUrl: Foundation.URL?
+  public var prefixes: [VideoIDSDK.PhoneCode]?
+  public var actionText: Swift.String?
+  public var action: ((_ phone: Swift.String?) -> ())?
+}
+@_hasMissingDesignatedInitializers public class SdkSettings : Swift.Decodable {
+  @objc deinit
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class AudioSettings : Swift.Decodable {
+  @objc deinit
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class SdkMessages : Swift.Decodable {
+  @objc deinit
+  required public init(from decoder: any Swift.Decoder) throws
+}
+
+
+@objc @_Concurrency.MainActor @preconcurrency open class BaseViewController : UIKit.UIViewController {
+  @objc @_Concurrency.MainActor @preconcurrency weak public var delegate: (any VideoIDSDK.VideoIDDelegate)?
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency public func initializeVideoSDK(environment: VideoIDSDK.SDKEnvironment, docType: Swift.Int? = nil, language: Swift.String? = nil, docTypes: [Swift.Int]? = nil, idDefault: Swift.Int? = nil, biometricConsent: Swift.Bool? = nil)
+  @_Concurrency.MainActor @preconcurrency public func initializeVideoScanSDK(environment: VideoIDSDK.SDKEnvironment, docType: Swift.Int? = nil, language: Swift.String? = nil, docTypes: [Swift.Int]? = nil, idDefault: Swift.Int? = nil, biometricConsent: Swift.Bool? = nil)
+  @_Concurrency.MainActor @preconcurrency public init(environment: VideoIDSDK.SDKEnvironment)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLayoutSubviews()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewSafeAreaInsetsDidChange()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func viewDidDisappear(_ animated: Swift.Bool)
+  @objc deinit
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @objc get
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var preferredInterfaceOrientationForPresentation: UIKit.UIInterfaceOrientation {
+    @objc get
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var shouldAutorotate: Swift.Bool {
+    @objc get
+  }
+  @_Concurrency.MainActor @preconcurrency open func getCustomHologramMultimediaNotification(notification: VideoIDSDK.MediaNotification) -> VideoIDSDK.CustomHologramMediaNotificationViewController?
+  @_Concurrency.MainActor @preconcurrency open func getCustomMultimediaNotification(notification: VideoIDSDK.MediaNotification) -> VideoIDSDK.CustomMediaNotificationViewController?
+  @_Concurrency.MainActor @preconcurrency open func getCustomWarningNotification(notification: VideoIDSDK.WarningNotification) -> VideoIDSDK.CustomWarningNotificationViewController?
+  @_Concurrency.MainActor @preconcurrency open func getCustomErrorNotificationViewController(notification: VideoIDSDK.ErrorNotification) -> VideoIDSDK.CustomErrorNotificationViewController?
+  @_Concurrency.MainActor @preconcurrency open func getCustomCountrySelectionNotificationViewController(notification: VideoIDSDK.CountrySelectionNotification) -> VideoIDSDK.CustomCountrySelectionNotificationViewController?
+  @_Concurrency.MainActor @preconcurrency open func getCustomDocumentSelectionNotificationViewController(notification: VideoIDSDK.DocumentSelectionNotification) -> VideoIDSDK.CustomDocumentSelectionNotificationViewController?
+  @_Concurrency.MainActor @preconcurrency open func getCustomIntroViewNotificationViewController(notification: VideoIDSDK.IntroViewNotification) -> VideoIDSDK.CustomIntroViewNotificationViewController?
+  @_Concurrency.MainActor @preconcurrency open func getCustomInfoItemsNotificationViewController(notification: VideoIDSDK.InfoItemsNotification) -> VideoIDSDK.CustomInfoItemsNotificationViewController?
+  @_Concurrency.MainActor @preconcurrency open func getCustomPermissionsInfoViewController(notification: VideoIDSDK.CameraPermissionRequestNotification) -> VideoIDSDK.CustomPermissionsInfoViewController?
+  @_Concurrency.MainActor @preconcurrency open func getCustomCarouselScrollViewController(notification: VideoIDSDK.CarouselNotification) -> VideoIDSDK.CustomCarouselScrollViewController?
+  @_Concurrency.MainActor @preconcurrency open func getCustomCaptchaTextViewController(notification: VideoIDSDK.CaptchaTextNotification) -> VideoIDSDK.CustomCaptchaTextViewController?
+  @_Concurrency.MainActor @preconcurrency open func getCustomCaptchaOTPViewController(notification: VideoIDSDK.CaptchaOTPNotification) -> VideoIDSDK.CustomCaptchaOTPViewController?
+  @_Concurrency.MainActor @preconcurrency open func getCustomPhoneRequestViewController(notification: VideoIDSDK.PhoneRequestNotification) -> VideoIDSDK.CustomPhoneRequestViewController?
+  @_Concurrency.MainActor @preconcurrency open func onPhaseStarted(phase: Swift.String)
+  @_Concurrency.MainActor @preconcurrency open func onPhaseCompleted(phase: Swift.String)
+  @_Concurrency.MainActor @preconcurrency open func onEvent(event: VideoIDSDK.EIDEvent)
+}
+@objc @objcMembers @_Concurrency.MainActor @preconcurrency public class SmileIDSDKViewController : VideoIDSDK.BaseViewController {
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency public init(environment: VideoIDSDK.SDKEnvironment, language: Swift.String? = nil, biometricConsent: Swift.Bool? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency public init(environment: VideoIDSDK.SDKEnvironment, language: Swift.String? = nil, biometricConsent: VideoIDSDK.OptionalBool)
+  @objc deinit
+}
+public enum Process : Swift.String, Swift.Codable {
+  case Attended, Unattended
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class CustomWarningNotificationViewController : VideoIDSDK.CustomNotificationViewController<VideoIDSDK.WarningNotification> {
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.WarningNotification, nibName: Swift.String)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.WarningNotification)
+  @objc deinit
+}
+public struct CarouselNotification {
+  public let name: Swift.String?
+  public let title: Swift.String?
+  public let description: Swift.String?
+  public let currentStep: Swift.Int?
+  public let steps: Swift.Int?
+  public let audioUrl: Foundation.URL?
+  public let animationUrl: Foundation.URL?
+  public let action1Text: Swift.String?
+  public var action1: (() -> ())?
+  public var next: (() -> ())?
+  public var previous: (() -> ())?
+}
+public struct InfoItemsNotification {
+  public let name: Swift.String?
+  public var title: Swift.String?
+  public var description: Swift.String?
+  public var action1Text: Swift.String?
+  public var action2Text: Swift.String?
+  public var action3Text: Swift.String?
+  public var actionModalText: Swift.String?
+  public var actionModalValue: Swift.String?
+  public var closeText: Swift.String?
+  public var list: [VideoIDSDK.NotificationOthersList]?
+  public var previousText: Swift.String?
+  public var previous: (() -> ())?
+  public var action1: (() -> ())?
+  public var action2: (() -> ())?
+  public var action3: (() -> ())?
+  public var checkbox: VideoIDSDK.CheckboxInput?
+}
+@objc @objcMembers @_Concurrency.MainActor @preconcurrency public class VideoScanSDKViewController : VideoIDSDK.BaseViewController {
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency public init(environment: VideoIDSDK.SDKEnvironment, docType: Swift.Int? = nil, language: Swift.String? = nil, docTypes: [Swift.Int]? = nil, defaultId: Swift.Int?, biometricConsent: Swift.Bool? = nil)
+  @_Concurrency.MainActor @preconcurrency public init(environment: VideoIDSDK.SDKEnvironment, docType: Foundation.NSNumber? = nil, language: Swift.String? = nil, docTypes: [Swift.Int]? = nil, biometricConsent: Swift.Bool? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency public init(environment: VideoIDSDK.SDKEnvironment, docType: Foundation.NSNumber? = nil, language: Swift.String? = nil, docTypes: [Swift.Int]? = nil, defaultId: Foundation.NSNumber?, biometricConsent: VideoIDSDK.OptionalBool)
+  @objc deinit
+}
+@objc public enum VideoService : Swift.Int {
+  case videoID
+  case videoScan
+  case smileID
+  case undefined
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum VideoServiceType : Swift.String {
+  case VideoID, VideoScan, SmileID, Undefined
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct CountrySelectionNotification {
+  public let name: Swift.String?
+  public var title: Swift.String?
+  public var subtitle: Swift.String?
+  public var description: Swift.String?
+  public var selector: Swift.String?
+  public var idTypes: [VideoIDSDK.IdType]?
+  public var countries: [VideoIDSDK.Country]?
+  public var countrySelector: Swift.String?
+  public var tip: Swift.String?
+  public var documentSelectorText: Swift.String?
+  public var actionText: Swift.String?
+  public var previousText: Swift.String?
+  public var previous: (() -> ())?
+  public var actionCountry: ((_ country: Swift.String?) -> ())?
+  public var action: ((_ idtype: Swift.Int?) -> ())?
+}
+public enum IconCatalog : Swift.String {
+  case camera
+  case videocam
+  case speaker
+  case secure
+  case globe
+  case lightBulb
+  case idCard
+  case passport
+  case residence
+  case driversLicense
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class CustomIntroViewNotificationViewController : VideoIDSDK.CustomNotificationViewController<VideoIDSDK.IntroViewNotification> {
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.IntroViewNotification, nibName: Swift.String)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.IntroViewNotification)
+  @objc deinit
+}
+public protocol EngineDelegate : AnyObject {
+  func didReceive(event: VideoIDSDK.WebSocketEvent)
+}
+public protocol Engine {
+  func register(delegate: any VideoIDSDK.EngineDelegate)
+  func start(request: Foundation.URLRequest)
+  func stop(closeCode: Swift.UInt16)
+  func forceStop()
+  func write(data: Foundation.Data, opcode: VideoIDSDK.FrameOpCode, completion: (() -> ())?)
+  func write(string: Swift.String, completion: (() -> ())?)
+}
+@objc public class SDKEnvironment : ObjectiveC.NSObject {
+  final public let restURL: Swift.String
+  final public let wsURL: Swift.String
+  final public let authorization: Swift.String
+  @objc public init(url: Swift.String, authorization: Swift.String)
+  @objc deinit
+}
+
+
+@available(macOS 10.14, iOS 12.0, watchOS 5.0, tvOS 12.0, *)
+@available(watchOS, unavailable)
+public class WebSocketServer : VideoIDSDK.Server, VideoIDSDK.ConnectionDelegate {
+  public var onEvent: ((VideoIDSDK.ServerEvent) -> Swift.Void)?
+  public init()
+  public func start(address: Swift.String, port: Swift.UInt16) -> (any Swift.Error)?
+  public func didReceive(event: VideoIDSDK.ServerEvent)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(macOS 10.14, iOS 12.0, watchOS 5.0, tvOS 12.0, *)
+public class ServerConnection : VideoIDSDK.Connection, VideoIDSDK.HTTPServerDelegate, VideoIDSDK.FramerEventClient, VideoIDSDK.FrameCollectorDelegate, VideoIDSDK.TransportEventClient {
+  public var onEvent: ((VideoIDSDK.ConnectionEvent) -> Swift.Void)?
+  weak public var delegate: (any VideoIDSDK.ConnectionDelegate)?
+  public func write(data: Foundation.Data, opcode: VideoIDSDK.FrameOpCode)
+  public func connectionChanged(state: VideoIDSDK.ConnectionState)
+  public func didReceive(event: VideoIDSDK.HTTPEvent)
+  public func frameProcessed(event: VideoIDSDK.FrameEvent)
+  public func didForm(event: VideoIDSDK.FrameCollector.Event)
+  public func decompress(data: Foundation.Data, isFinal: Swift.Bool) -> Foundation.Data?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class CheckResult : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var passed: Swift.Bool
+  @objc public var result: VideoIDSDK.CheckResultData
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @objc public class CheckResultData : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var camera: VideoIDSDK.CameraData?
+  @objc public var microphone: VideoIDSDK.Microphone?
+  @objc public var bandwidth: VideoIDSDK.Bandwidth?
+  @objc public var autofocus: VideoIDSDK.Autofocus?
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @objc public class CameraData : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var passed: Swift.Bool
+  @objc public var data: VideoIDSDK.DeviceRequirements
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @objc public class Microphone : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var passed: Swift.Bool
+  @objc public var data: VideoIDSDK.DeviceRequirements
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @objc public class Autofocus : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var passed: Swift.Bool
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @objc public class Bandwidth : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var passed: Swift.Bool
+  @objc public var data: VideoIDSDK.BandwidthData
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @objc public class DeviceRequirements : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var found: Swift.Bool
+  public var permissions: VideoIDSDK.Permissions?
+  @objc public var permissionsStatus: VideoIDSDK.PermissionsStatus
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class BandwidthData : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var download: Swift.Double
+  @objc public var upload: Swift.Double
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public enum Permissions : Swift.String, Swift.Codable {
+  case Granted, Denied, Unknown
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc public enum PermissionsStatus : Swift.Int, Swift.Codable {
+  case Granted = 0
+  case Denied
+  case Unknown
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class CustomHologramMediaNotificationViewController : VideoIDSDK.CustomNotificationViewController<VideoIDSDK.MediaNotification> {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func viewDidLoad()
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.MediaNotification, nibName: Swift.String)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.MediaNotification)
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct CameraPermissionInfoView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(title: Swift.String, subtitle: Swift.String, icon: VideoIDSDK.IconCatalog = .camera)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s10VideoIDSDK24CameraPermissionInfoViewV4bodyQrvp", 0) __
+}
+
+public struct CardModel : Swift.Identifiable {
+  public let id: Swift.Int
+  public let title: Swift.String
+  public let leftImage: Swift.String
+  public let rightImage: SwiftUICore.Image
+  public init(id: Swift.Int, title: Swift.String, leftImage: Swift.String, rightImage: SwiftUICore.Image)
+  public typealias ID = Swift.Int
+}
+
+@objc public enum Phase : Swift.Int {
+  case front, back, face, captcha, hologram, fingerPrint
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public class Quad : ObjectiveC.NSObject, Swift.Decodable {
+  public var p1: VideoIDSDK.Point
+  public var p2: VideoIDSDK.Point
+  public var p3: VideoIDSDK.Point
+  public var p4: VideoIDSDK.Point
+  public var width: CoreFoundation.CGFloat {
+    get
+  }
+  public var height: CoreFoundation.CGFloat {
+    get
+  }
+  public init(p1: VideoIDSDK.Point, p2: VideoIDSDK.Point, p3: VideoIDSDK.Point, p4: VideoIDSDK.Point)
+  @objc deinit
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class StatsAck : Swift.Encodable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+@_hasMissingDesignatedInitializers public class StatsAckData : Swift.Encodable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct MediaNotification {
+  public let name: Swift.String?
+  public let title: Swift.String?
+  public let subTitle: Swift.String?
+  public let description: Swift.String?
+  public let ttl: Swift.Int?
+  public let audioUrl: Foundation.URL?
+  public let animationURL: Foundation.URL?
+  public let imageURL: Foundation.URL?
+  public let gifURL: Foundation.URL?
+  public let tip: Swift.String?
+  public let header: Swift.String?
+  public let action1Text: Swift.String?
+  public let action2Text: Swift.String?
+  public let footerText: Swift.String?
+  public let closeText: Swift.String?
+  public var action2AfterDimmiss: Swift.Bool
+  public var action1: (() -> ())?
+  public var action2: (() -> ())?
+  public var footerAction: (() -> ())?
+  public var finishedAck: (() -> ())?
+}
+public enum FontType : Swift.String {
+  case light
+  case medium
+  case regular
+  case semiBold
+  public func font(size: CoreFoundation.CGFloat) -> UIKit.UIFont?
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc public enum OptionalBool : Swift.Int {
+  case none
+  case yes
+  case no
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @objcMembers @_Concurrency.MainActor @preconcurrency open class VideoIDSDKViewController : VideoIDSDK.BaseViewController {
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency public init(environment: VideoIDSDK.SDKEnvironment, docType: Swift.Int? = nil, language: Swift.String? = nil, docTypes: [Swift.Int]? = nil, idDefault: Swift.Int?, biometricConsent: Swift.Bool? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency public init(environment: VideoIDSDK.SDKEnvironment, docType: Foundation.NSNumber?, language: Swift.String?, docTypes: [Foundation.NSNumber]?, idDefault: Foundation.NSNumber, biometricConsent: VideoIDSDK.OptionalBool)
+  @_Concurrency.MainActor @preconcurrency public init(environment: VideoIDSDK.SDKEnvironment, docType: Foundation.NSNumber? = nil, language: Swift.String? = nil, docTypes: [Swift.Int]? = nil, biometricConsent: Swift.Bool? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency public init(environment: VideoIDSDK.SDKEnvironment, docType: Foundation.NSNumber? = nil, language: Swift.String? = nil, docTypes: [Swift.Int]? = nil, biometricConsent: VideoIDSDK.OptionalBool)
+  @objc deinit
+}
+@objc @_Concurrency.MainActor @preconcurrency open class CaptchaDynamicViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public init()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func viewDidLoad()
+  @objc @_Concurrency.MainActor @preconcurrency public func closeView(onComplete: @escaping () -> Swift.Void)
+  @objc deinit
+}
+extension VideoIDSDK.CaptchaDynamicViewController : UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+}
+@_Concurrency.MainActor @preconcurrency open class CustomNotificationViewController<TNotification> : UIKit.UIViewController {
+  @_Concurrency.MainActor @preconcurrency public var notification: TNotification
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency public init(notification: TNotification, nibName: Swift.String)
+  @_Concurrency.MainActor @preconcurrency public init(notification: TNotification)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func viewDidLoad()
+  @objc @_Concurrency.MainActor @preconcurrency open func onClose(sender: Any)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class CustomErrorNotificationViewController : VideoIDSDK.CustomNotificationViewController<VideoIDSDK.ErrorNotification> {
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.ErrorNotification, nibName: Swift.String)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.ErrorNotification)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class CustomCarouselScrollViewController : VideoIDSDK.CustomNotificationViewController<VideoIDSDK.CarouselNotification> {
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.CarouselNotification, nibName: Swift.String)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.CarouselNotification)
+  @objc deinit
+}
+public struct Country : Swift.Codable {
+  public init(country: Swift.String? = nil, countryName: Swift.String? = nil, countryFlag: Swift.String? = nil, flagIcon: Swift.String? = nil)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+@_hasMissingDesignatedInitializers open class VideoIDErrorFactory {
+  public static func create(code: Swift.String = "Error", message: Swift.String?, attempt: Swift.Int? = nil, environment: VideoIDSDK.VideoIDEnvironment? = nil, reportedOffline: Swift.Bool? = false, videoId: Swift.String? = nil) -> VideoIDSDK.VideoIDError
+  public static func create(node: VideoIDSDK.VideoIDErrorNode, attempt: Swift.Int? = nil, environment: VideoIDSDK.VideoIDEnvironment? = nil, reportedOffline: Swift.Bool? = false) -> VideoIDSDK.VideoIDError
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class VideoIDError : ObjectiveC.NSObject, Swift.Codable {
+  open var error: VideoIDSDK.VideoIDErrorNode?
+  open var attempt: Swift.Int?
+  public var videoId: Swift.String?
+  public init(error: VideoIDSDK.VideoIDErrorNode)
+  @objc deinit
+  open func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class VideoIDEnvironment : Swift.Codable {
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers open class VideoIDErrorNode : Swift.Codable, Swift.Equatable {
+  public static func == (lhs: VideoIDSDK.VideoIDErrorNode, rhs: VideoIDSDK.VideoIDErrorNode) -> Swift.Bool
+  open var date: Foundation.TimeInterval?
+  open var error: Swift.String
+  open var message: Swift.String?
+  @objc deinit
+  open func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class CustomPermissionsInfoViewController : VideoIDSDK.CustomNotificationViewController<VideoIDSDK.CameraPermissionRequestNotification> {
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.CameraPermissionRequestNotification, nibName: Swift.String)
+  @_Concurrency.MainActor @preconcurrency override public init(notification: VideoIDSDK.CameraPermissionRequestNotification)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class Point : Swift.Codable {
+  public var x: Swift.Int
+  public var y: Swift.Int
+  public func xCGFloat() -> CoreFoundation.CGFloat
+  public func yCGFloat() -> CoreFoundation.CGFloat
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+extension VideoIDSDK.SecurityErrorCode : Swift.Equatable {}
+extension VideoIDSDK.SecurityErrorCode : Swift.Hashable {}
+extension VideoIDSDK.SecurityErrorCode : Swift.RawRepresentable {}
+extension VideoIDSDK.TCPTransportError : Swift.Equatable {}
+extension VideoIDSDK.TCPTransportError : Swift.Hashable {}
+extension VideoIDSDK.FoundationSecurityError : Swift.Equatable {}
+extension VideoIDSDK.FoundationSecurityError : Swift.Hashable {}
+extension VideoIDSDK.CheckBox.Style : Swift.Equatable {}
+extension VideoIDSDK.CheckBox.Style : Swift.Hashable {}
+extension VideoIDSDK.FoundationTransportError : Swift.Equatable {}
+extension VideoIDSDK.FoundationTransportError : Swift.Hashable {}
+extension VideoIDSDK.ErrorType : Swift.Equatable {}
+extension VideoIDSDK.ErrorType : Swift.Hashable {}
+extension VideoIDSDK.CloseCode : Swift.Equatable {}
+extension VideoIDSDK.CloseCode : Swift.Hashable {}
+extension VideoIDSDK.CloseCode : Swift.RawRepresentable {}
+extension VideoIDSDK.FrameOpCode : Swift.Equatable {}
+extension VideoIDSDK.FrameOpCode : Swift.Hashable {}
+extension VideoIDSDK.FrameOpCode : Swift.RawRepresentable {}
+extension VideoIDSDK.DocumentType : Swift.Equatable {}
+extension VideoIDSDK.DocumentType : Swift.Hashable {}
+extension VideoIDSDK.DocumentType : Swift.RawRepresentable {}
+extension VideoIDSDK.Themes : Swift.Equatable {}
+extension VideoIDSDK.Themes : Swift.Hashable {}
+extension VideoIDSDK.NotificationLevel : Swift.Equatable {}
+extension VideoIDSDK.NotificationLevel : Swift.Hashable {}
+extension VideoIDSDK.NotificationLevel : Swift.RawRepresentable {}
+extension VideoIDSDK.TextInputType : Swift.Equatable {}
+extension VideoIDSDK.TextInputType : Swift.Hashable {}
+extension VideoIDSDK.TextInputType : Swift.RawRepresentable {}
+extension VideoIDSDK.ShapeType : Swift.Equatable {}
+extension VideoIDSDK.ShapeType : Swift.Hashable {}
+extension VideoIDSDK.ShapeType : Swift.RawRepresentable {}
+extension VideoIDSDK.NotificationEventType : Swift.Equatable {}
+extension VideoIDSDK.NotificationEventType : Swift.Hashable {}
+extension VideoIDSDK.NotificationEventType : Swift.RawRepresentable {}
+extension VideoIDSDK.Process : Swift.Equatable {}
+extension VideoIDSDK.Process : Swift.Hashable {}
+extension VideoIDSDK.Process : Swift.RawRepresentable {}
+extension VideoIDSDK.VideoService : Swift.Equatable {}
+extension VideoIDSDK.VideoService : Swift.Hashable {}
+extension VideoIDSDK.VideoService : Swift.RawRepresentable {}
+extension VideoIDSDK.VideoServiceType : Swift.Equatable {}
+extension VideoIDSDK.VideoServiceType : Swift.Hashable {}
+extension VideoIDSDK.VideoServiceType : Swift.RawRepresentable {}
+extension VideoIDSDK.IconCatalog : Swift.Equatable {}
+extension VideoIDSDK.IconCatalog : Swift.Hashable {}
+extension VideoIDSDK.IconCatalog : Swift.RawRepresentable {}
+extension VideoIDSDK.Permissions : Swift.Equatable {}
+extension VideoIDSDK.Permissions : Swift.Hashable {}
+extension VideoIDSDK.Permissions : Swift.RawRepresentable {}
+extension VideoIDSDK.PermissionsStatus : Swift.Equatable {}
+extension VideoIDSDK.PermissionsStatus : Swift.Hashable {}
+extension VideoIDSDK.PermissionsStatus : Swift.RawRepresentable {}
+extension VideoIDSDK.CameraPermissionInfoView : Swift.Sendable {}
+extension VideoIDSDK.Phase : Swift.Equatable {}
+extension VideoIDSDK.Phase : Swift.Hashable {}
+extension VideoIDSDK.Phase : Swift.RawRepresentable {}
+extension VideoIDSDK.FontType : Swift.Equatable {}
+extension VideoIDSDK.FontType : Swift.Hashable {}
+extension VideoIDSDK.FontType : Swift.RawRepresentable {}
+extension VideoIDSDK.OptionalBool : Swift.Equatable {}
+extension VideoIDSDK.OptionalBool : Swift.Hashable {}
+extension VideoIDSDK.OptionalBool : Swift.RawRepresentable {}

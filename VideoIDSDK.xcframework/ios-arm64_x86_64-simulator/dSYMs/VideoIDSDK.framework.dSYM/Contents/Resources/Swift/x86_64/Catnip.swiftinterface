@@ -1,0 +1,1187 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.4 effective-5.10 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)
+// swift-module-flags: -target x86_64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -language-mode 5 -O -enable-experimental-feature DebugDescriptionMacro -module-name Catnip -package-name catnip
+// swift-module-flags-ignorable:  -formal-cxx-interoperability-mode=off -interface-compiler-version 6.4
+import DeveloperToolsSupport
+import Foundation
+import Foundation/*.Bundle*/
+import Foundation/*.ProcessInfo*/
+import Foundation/*.URL*/
+import Swift
+import SwiftUI
+import UIKit
+import WebKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import _WebKit_SwiftUI
+@_Concurrency::MainActor @preconcurrency public struct ActionButton : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let action: () -> Swift::Void
+  @_Concurrency::MainActor @preconcurrency public let text: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let isEnabled: Swift::Bool
+  @_Concurrency::MainActor @preconcurrency public let accessibilityLabel: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let accessibilityHint: Swift::String
+  @_Concurrency::MainActor @preconcurrency public init(action: @escaping () -> Swift::Void, text: Swift::String, isEnabled: Swift::Bool = true, accessibilityLabel: Swift::String? = nil, accessibilityHint: Swift::String? = nil)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip12ActionButtonV4bodyQrvp", 0) __
+}
+@_Concurrency::MainActor @preconcurrency public struct BackButton : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let action: () -> Swift::Void
+  @_Concurrency::MainActor @preconcurrency public let text: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let accessibilityLabel: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let accessibilityHint: Swift::String
+  @_Concurrency::MainActor @preconcurrency public init(action: @escaping () -> Swift::Void, text: Swift::String, accessibilityLabel: Swift::String? = nil, accessibilityHint: Swift::String? = nil)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip10BackButtonV4bodyQrvp", 0) __
+}
+@_Concurrency::MainActor @preconcurrency public struct SecondaryButton : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let action: () -> Swift::Void
+  @_Concurrency::MainActor @preconcurrency public let text: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let isEnabled: Swift::Bool
+  @_Concurrency::MainActor @preconcurrency public let accessibilityLabel: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let accessibilityHint: Swift::String
+  @_Concurrency::MainActor @preconcurrency public init(action: @escaping () -> Swift::Void, text: Swift::String, isEnabled: Swift::Bool = true, accessibilityLabel: Swift::String? = nil, accessibilityHint: Swift::String? = nil)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip15SecondaryButtonV4bodyQrvp", 0) __
+}
+@_Concurrency::MainActor @preconcurrency public struct Badge : SwiftUICore::View {
+  public enum Kind {
+    case neutral
+    case informative
+    case success
+    case warning
+    case danger
+    case disabled
+    case brand
+    public static func == (a: Catnip::Badge.Catnip::Kind, b: Catnip::Badge.Catnip::Kind) -> Swift::Bool
+    public func hash(into hasher: inout Swift::Hasher)
+    public var hashValue: Swift::Int {
+      get
+    }
+  }
+  public enum Fill {
+    case `default`
+    case inverted
+    public static func == (a: Catnip::Badge.Catnip::Fill, b: Catnip::Badge.Catnip::Fill) -> Swift::Bool
+    public func hash(into hasher: inout Swift::Hasher)
+    public var hashValue: Swift::Int {
+      get
+    }
+  }
+  public enum Size {
+    case small
+    case medium
+    case large
+    public static func == (a: Catnip::Badge.Catnip::Size, b: Catnip::Badge.Catnip::Size) -> Swift::Bool
+    public func hash(into hasher: inout Swift::Hasher)
+    public var hashValue: Swift::Int {
+      get
+    }
+  }
+  @_Concurrency::MainActor @preconcurrency public let text: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let type: Catnip::Badge.Catnip::Kind
+  @_Concurrency::MainActor @preconcurrency public let fill: Catnip::Badge.Catnip::Fill
+  @_Concurrency::MainActor @preconcurrency public let size: Catnip::Badge.Catnip::Size
+  @_Concurrency::MainActor @preconcurrency public let leadingAsset: SwiftUICore::Image?
+  @_Concurrency::MainActor @preconcurrency public let accessibilityLabel: Swift::String
+  @_Concurrency::MainActor @preconcurrency public init(text: Swift::String, type: Catnip::Badge.Catnip::Kind = .neutral, fill: Catnip::Badge.Catnip::Fill = .default, size: Catnip::Badge.Catnip::Size = .small, leadingAsset: SwiftUICore::Image? = nil, accessibilityLabel: Swift::String? = nil)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip5BadgeV4bodyQrvp", 0) __
+}
+
+@_Concurrency::MainActor @preconcurrency public struct AlertView : SwiftUICore::View {
+  public enum Kind {
+    case informative
+    public static func == (a: Catnip::AlertView.Catnip::Kind, b: Catnip::AlertView.Catnip::Kind) -> Swift::Bool
+    public func hash(into hasher: inout Swift::Hasher)
+    public var hashValue: Swift::Int {
+      get
+    }
+  }
+  public enum Style {
+    case inline
+    case text
+    public static func == (a: Catnip::AlertView.Catnip::Style, b: Catnip::AlertView.Catnip::Style) -> Swift::Bool
+    public func hash(into hasher: inout Swift::Hasher)
+    public var hashValue: Swift::Int {
+      get
+    }
+  }
+  public enum Size {
+    case medium
+    case large
+    public static func == (a: Catnip::AlertView.Catnip::Size, b: Catnip::AlertView.Catnip::Size) -> Swift::Bool
+    public func hash(into hasher: inout Swift::Hasher)
+    public var hashValue: Swift::Int {
+      get
+    }
+  }
+  @_Concurrency::MainActor @preconcurrency public let text: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let type: Catnip::AlertView.Catnip::Kind
+  @_Concurrency::MainActor @preconcurrency public let icon: SwiftUICore::Image?
+  @_Concurrency::MainActor @preconcurrency public let style: Catnip::AlertView.Catnip::Style
+  @_Concurrency::MainActor @preconcurrency public let size: Catnip::AlertView.Catnip::Size
+  @_Concurrency::MainActor @preconcurrency public let accessibilityLabel: Swift::String
+  @_Concurrency::MainActor @preconcurrency public init(text: Swift::String, type: Catnip::AlertView.Catnip::Kind = .informative, icon: SwiftUICore::Image? = nil, style: Catnip::AlertView.Catnip::Style = .inline, size: Catnip::AlertView.Catnip::Size = .medium, accessibilityLabel: Swift::String? = nil)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip9AlertViewV4bodyQrvp", 0) __
+}
+
+@_Concurrency::MainActor @preconcurrency public struct ButtonsComponent : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public init(actionButtonText: Swift::String? = nil, actionButtonAction: (() -> Swift::Void)? = nil, actionButtonAccessibilityLabel: Swift::String? = nil, actionButtonAccessibilityHint: Swift::String? = nil, secondaryButtonText: Swift::String? = nil, secondaryButtonAction: (() -> Swift::Void)? = nil, secondaryButtonAccessibilityLabel: Swift::String? = nil, secondaryButtonAccessibilityHint: Swift::String? = nil)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip16ButtonsComponentV4bodyQrvp", 0) __
+}
+
+@_Concurrency::MainActor @preconcurrency public struct CardView : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public init(title: Swift::String, subtitle: Swift::String? = nil, image: SwiftUICore::Image, rightImage: SwiftUICore::Image, color: SwiftUICore::Color? = nil, action1: (() -> Swift::Void)? = nil)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip8CardViewV4bodyQrvp", 0) __
+}
+
+@_Concurrency::MainActor @preconcurrency public struct ClearableTextField : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let placeholder: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let keyboardType: UIKit::UIKeyboardType
+  @_Concurrency::MainActor @preconcurrency public let accessibilityLabel: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let clearAccessibilityLabel: Swift::String
+  @_Concurrency::MainActor @preconcurrency public init(text: SwiftUICore::Binding<Swift::String>, placeholder: Swift::String = "", keyboardType: UIKit::UIKeyboardType = .default, accessibilityLabel: Swift::String? = nil, clearAccessibilityLabel: Swift::String = "Clear")
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip18ClearableTextFieldV4bodyQrvp", 0) __
+}
+
+@_Concurrency::MainActor @preconcurrency public struct CodeInput : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let length: Swift::Int
+  @_Concurrency::MainActor @preconcurrency public let keyboardType: UIKit::UIKeyboardType
+  @_Concurrency::MainActor @preconcurrency public let accessibilityLabel: Swift::String
+  @_Concurrency::MainActor @preconcurrency public init(code: SwiftUICore::Binding<Swift::String>, length: Swift::Int = 6, keyboardType: UIKit::UIKeyboardType = .numberPad, accessibilityLabel: Swift::String? = nil)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip9CodeInputV4bodyQrvp", 0) __
+}
+
+public struct DropdownItem : Swift::Identifiable, Swift::Hashable {
+  public var id: Foundation::UUID
+  public var tag: Swift::String?
+  public var imageURL: Foundation::URL?
+  public let value: Swift::String
+  public let country: Swift::String
+  public init(tag: Swift::String? = nil, imageURL: Foundation::URL? = nil, value: Swift::String, country: Swift::String)
+  public static func == (a: Catnip::DropdownItem, b: Catnip::DropdownItem) -> Swift::Bool
+  public typealias ID = Foundation::UUID
+  public func hash(into hasher: inout Swift::Hasher)
+  public var hashValue: Swift::Int {
+    get
+  }
+}
+@_Concurrency::MainActor @preconcurrency public struct DropDownList : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let title: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let image: SwiftUICore::Image
+  @_Concurrency::MainActor @preconcurrency public let options: [Catnip::DropdownItem]
+  @_Concurrency::MainActor @preconcurrency public init(title: Swift::String, image: SwiftUICore::Image, options: [Catnip::DropdownItem], showDropdown: SwiftUICore::Binding<Swift::Bool>)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip12DropDownListV4bodyQrvp", 0) __
+}
+
+@_Concurrency::MainActor @preconcurrency public struct HeaderLabelView : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public init(text: Swift::String, accessibilityLabel: Swift::String? = nil, alignment: SwiftUICore::TextAlignment = .leading)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip15HeaderLabelViewV4bodyQrvp", 0) __
+}
+
+@_Concurrency::MainActor @preconcurrency public struct InfoTipView : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public init(text: Swift::String)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip11InfoTipViewV4bodyQrvp", 0) __
+}
+
+@_Concurrency::MainActor @preconcurrency public struct MainContent : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public var mainImageURL: Foundation::URL?
+  @_Concurrency::MainActor @preconcurrency public var mainImageAccessibilityLabel: Swift::String?
+  @_Concurrency::MainActor @preconcurrency public var titleText: Swift::String?
+  @_Concurrency::MainActor @preconcurrency public var titleAccessibilityLabel: Swift::String?
+  @_Concurrency::MainActor @preconcurrency public var descriptionText: Swift::String?
+  @_Concurrency::MainActor @preconcurrency public var descriptionAccessibilityLabel: Swift::String?
+  @_Concurrency::MainActor @preconcurrency public init(mainImageURL: Foundation::URL? = nil, mainImageAccessibilityLabel: Swift::String? = nil, mainImageAccessibilityHint: Swift::String? = nil, titleText: Swift::String? = nil, titleAccessibilityLabel: Swift::String? = nil, descriptionText: Swift::String? = nil, descriptionAccessibilityLabel: Swift::String? = nil)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip11MainContentV4bodyQrvp", 0) __
+}
+
+public struct CountryPickerItem : Swift::Identifiable {
+  public let id: Foundation::UUID
+  public let flag: Swift::String
+  public let name: Swift::String
+  public let code: Swift::String
+  public init(flag: Swift::String, name: Swift::String, code: Swift::String)
+  public typealias ID = Foundation::UUID
+}
+@_Concurrency::MainActor @preconcurrency public struct PhoneInput : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public init(selectedCountry: SwiftUICore::Binding<Catnip::CountryPickerItem>, countries: [Catnip::CountryPickerItem], phoneNumber: SwiftUICore::Binding<Swift::String>)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip10PhoneInputV4bodyQrvp", 0) __
+}
+@_Concurrency::MainActor @preconcurrency public struct SelectorRowView : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public init(title: Swift::String, selectedText: Swift::String, imageUrl: Foundation::URL? = nil, action: @escaping () -> Swift::Void)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip15SelectorRowViewV4bodyQrvp", 0) __
+}
+
+@_Concurrency::MainActor @preconcurrency public struct SpinnerView : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public init()
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip11SpinnerViewV4bodyQrvp", 0) __
+}
+public struct StepItem {
+  public enum State {
+    case completed
+    case current
+    case upcoming
+    case error
+    case warning
+    public static func == (a: Catnip::StepItem.Catnip::State, b: Catnip::StepItem.Catnip::State) -> Swift::Bool
+    public func hash(into hasher: inout Swift::Hasher)
+    public var hashValue: Swift::Int {
+      get
+    }
+  }
+  public let number: Swift::Int?
+  public let text: Swift::String
+  public let state: Catnip::StepItem.Catnip::State
+  public init(number: Swift::Int?, text: Swift::String, state: Catnip::StepItem.Catnip::State? = nil)
+}
+@_Concurrency::MainActor @preconcurrency public struct StepperView : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let steps: [Catnip::StepItem]
+  @_Concurrency::MainActor @preconcurrency public init(steps: [Catnip::StepItem])
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip11StepperViewV4bodyQrvp", 0) __
+}
+
+@_Concurrency::MainActor @preconcurrency public struct TextItemListView : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let items: [Catnip::CEUListItem]
+  @_Concurrency::MainActor @preconcurrency public let color: SwiftUICore::Color?
+  @_Concurrency::MainActor @preconcurrency public init(items: [Catnip::CEUListItem], color: SwiftUICore::Color? = nil)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip16TextItemListViewV4bodyQrvp", 0) __
+}
+
+public let itemListTestData: [Catnip::CEUListItem]
+public struct CEUListItem {
+  public var image: SwiftUICore::Image
+  public var text: Swift::String?
+  public var accessibilityLabel: Swift::String?
+  public init(image: SwiftUICore::Image, text: Swift::String? = nil, accessibilityLabel: Swift::String? = nil)
+}
+@_Concurrency::MainActor @preconcurrency public struct TextItemView : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let model: Catnip::CEUListItem
+  @_Concurrency::MainActor @preconcurrency public let color: SwiftUICore::Color?
+  @_Concurrency::MainActor @preconcurrency public init(model: Catnip::CEUListItem, color: SwiftUICore::Color? = CatnipColors.Content.Neutral.Stronger)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip12TextItemViewV4bodyQrvp", 0) __
+}
+
+public enum CatnipColors {
+  @_spi(Catalog) public struct Section : Swift::Identifiable {
+    @_spi(Catalog) public let name: Swift::String
+    @_spi(Catalog) public let groups: [Catnip::CatnipColors.Catnip::Group]
+    @_spi(Catalog) public var id: Swift::String {
+      @_spi(Catalog) get
+    }
+    @_spi(Catalog) public typealias ID = Swift::String
+  }
+  @_spi(Catalog) public struct Group : Swift::Identifiable {
+    @_spi(Catalog) public let name: Swift::String
+    @_spi(Catalog) public let items: [Catnip::CatnipColors.Catnip::Item]
+    @_spi(Catalog) public var id: Swift::String {
+      @_spi(Catalog) get
+    }
+    @_spi(Catalog) public typealias ID = Swift::String
+  }
+  @_spi(Catalog) public struct Item : Swift::Identifiable {
+    @_spi(Catalog) public let sectionName: Swift::String
+    @_spi(Catalog) public let groupName: Swift::String
+    @_spi(Catalog) public let name: Swift::String
+    @_spi(Catalog) public let lightHex: Swift::String
+    @_spi(Catalog) public let darkHex: Swift::String
+    @_spi(Catalog) public let lightOpacity: Swift::Double
+    @_spi(Catalog) public let darkOpacity: Swift::Double
+    @_spi(Catalog) public let color: SwiftUICore::Color
+    @_spi(Catalog) public let uiColor: UIKit::UIColor
+    @_spi(Catalog) public var id: Swift::String {
+      @_spi(Catalog) get
+    }
+    @_spi(Catalog) public var lightColor: SwiftUICore::Color {
+      @_spi(Catalog) get
+    }
+    @_spi(Catalog) public var darkColor: SwiftUICore::Color {
+      @_spi(Catalog) get
+    }
+    @_spi(Catalog) public var displayLight: Swift::String {
+      @_spi(Catalog) get
+    }
+    @_spi(Catalog) public var displayDark: Swift::String {
+      @_spi(Catalog) get
+    }
+    @_spi(Catalog) public typealias ID = Swift::String
+  }
+  public enum Background {
+    public enum Neutral {
+      public static let Subtlest: SwiftUICore::Color
+      public static let SubtlestHover: SwiftUICore::Color
+      public static let SubtlestPressed: SwiftUICore::Color
+      public static let Subtler: SwiftUICore::Color
+      public static let SubtlerHover: SwiftUICore::Color
+      public static let Subtle: SwiftUICore::Color
+      public static let SubtleHover: SwiftUICore::Color
+      public static let SubtlePressed: SwiftUICore::Color
+      public static let Strong: SwiftUICore::Color
+      public static let StrongInverse: SwiftUICore::Color
+      public static let Backdrop: SwiftUICore::Color
+    }
+    public enum Primary {
+      public static let Subtler: SwiftUICore::Color
+      public static let SubtlerHover: SwiftUICore::Color
+      public static let Subtle: SwiftUICore::Color
+      public static let SubtleHover: SwiftUICore::Color
+      public static let SubtlePressed: SwiftUICore::Color
+      public static let Strong: SwiftUICore::Color
+      public static let StrongHover: SwiftUICore::Color
+      public static let StrongPressed: SwiftUICore::Color
+    }
+    public enum Danger {
+      public static let Subtle: SwiftUICore::Color
+      public static let SubtleHover: SwiftUICore::Color
+      public static let SubtlePressed: SwiftUICore::Color
+      public static let Strong: SwiftUICore::Color
+      public static let StrongHover: SwiftUICore::Color
+      public static let StrongPressed: SwiftUICore::Color
+    }
+    public enum Success {
+      public static let Subtle: SwiftUICore::Color
+      public static let Strong: SwiftUICore::Color
+    }
+    public enum Info {
+      public static let Subtle: SwiftUICore::Color
+      public static let Strong: SwiftUICore::Color
+    }
+    public enum Warning {
+      public static let Subtle: SwiftUICore::Color
+      public static let Strong: SwiftUICore::Color
+    }
+    public enum Disabled {
+      public static let Subtler: SwiftUICore::Color
+      public static let Subtle: SwiftUICore::Color
+      public static let Strong: SwiftUICore::Color
+      public static let Stronger: SwiftUICore::Color
+    }
+  }
+  public enum Content {
+    public enum On {
+      public static let Primary: SwiftUICore::Color
+      public static let Neutral: SwiftUICore::Color
+      public static let Disabled: SwiftUICore::Color
+      public static let Info: SwiftUICore::Color
+      public static let Warning: SwiftUICore::Color
+      public static let Danger: SwiftUICore::Color
+      public static let Success: SwiftUICore::Color
+    }
+    public enum Primary {
+      public static let Strong: SwiftUICore::Color
+      public static let StrongHover: SwiftUICore::Color
+      public static let Stronger: SwiftUICore::Color
+      public static let Strongest: SwiftUICore::Color
+    }
+    public enum Neutral {
+      public static let Strongest: SwiftUICore::Color
+      public static let Stronger: SwiftUICore::Color
+      public static let Strong: SwiftUICore::Color
+      public static let Subtle: SwiftUICore::Color
+      public static let SubtleHover: SwiftUICore::Color
+      public static let SubtlePressed: SwiftUICore::Color
+      public static let StrongestInverse: SwiftUICore::Color
+    }
+    public enum Disabled {
+      public static let Subtle: SwiftUICore::Color
+      public static let Strong: SwiftUICore::Color
+    }
+    public enum Danger {
+      public static let Strong: SwiftUICore::Color
+    }
+    public enum Success {
+      public static let Strong: SwiftUICore::Color
+      public static let Inverse: SwiftUICore::Color
+    }
+    public enum Warning {
+      public static let Strong: SwiftUICore::Color
+    }
+    public enum Info {
+      public static let Strong: SwiftUICore::Color
+    }
+  }
+  public enum Border {
+    public enum Neutral {
+      public static let Subtlest: SwiftUICore::Color
+      public static let SubtlestHover: SwiftUICore::Color
+      public static let Subtler: SwiftUICore::Color
+      public static let SubtlerHover: SwiftUICore::Color
+      public static let Subtle: SwiftUICore::Color
+      public static let SubtleHover: SwiftUICore::Color
+      public static let Strong: SwiftUICore::Color
+      public static let StrongHover: SwiftUICore::Color
+      public static let Stronger: SwiftUICore::Color
+      public static let StrongerHover: SwiftUICore::Color
+    }
+    public enum Primary {
+      public static let Subtle: SwiftUICore::Color
+      public static let Strong: SwiftUICore::Color
+      public static let StrongHover: SwiftUICore::Color
+      public static let Stronger: SwiftUICore::Color
+      public static let Focus: SwiftUICore::Color
+    }
+    public enum Disabled {
+      public static let Subtle: SwiftUICore::Color
+      public static let Strong: SwiftUICore::Color
+    }
+    public enum Danger {
+      public static let Subtle: SwiftUICore::Color
+      public static let Strong: SwiftUICore::Color
+      public static let Focus: SwiftUICore::Color
+    }
+    public enum Success {
+      public static let Subtle: SwiftUICore::Color
+      public static let Strong: SwiftUICore::Color
+    }
+    public enum Warning {
+      public static let Subtle: SwiftUICore::Color
+      public static let Strong: SwiftUICore::Color
+    }
+    public enum Info {
+      public static let Subtle: SwiftUICore::Color
+      public static let Strong: SwiftUICore::Color
+    }
+  }
+  public enum TopBar {
+    public static let ContentOnPrimary: SwiftUICore::Color
+    public static let TopBar: SwiftUICore::Color
+    public static let TopBarHover: SwiftUICore::Color
+    public static let TopBarPressed: SwiftUICore::Color
+    public static let TopBarStroke: SwiftUICore::Color
+  }
+  public enum UIKitColors {
+    public enum Background {
+      public enum Neutral {
+        public static let Subtlest: UIKit::UIColor
+        public static let SubtlestHover: UIKit::UIColor
+        public static let SubtlestPressed: UIKit::UIColor
+        public static let Subtler: UIKit::UIColor
+        public static let SubtlerHover: UIKit::UIColor
+        public static let Subtle: UIKit::UIColor
+        public static let SubtleHover: UIKit::UIColor
+        public static let SubtlePressed: UIKit::UIColor
+        public static let Strong: UIKit::UIColor
+        public static let StrongInverse: UIKit::UIColor
+        public static let Backdrop: UIKit::UIColor
+      }
+      public enum Primary {
+        public static let Subtler: UIKit::UIColor
+        public static let SubtlerHover: UIKit::UIColor
+        public static let Subtle: UIKit::UIColor
+        public static let SubtleHover: UIKit::UIColor
+        public static let SubtlePressed: UIKit::UIColor
+        public static let Strong: UIKit::UIColor
+        public static let StrongHover: UIKit::UIColor
+        public static let StrongPressed: UIKit::UIColor
+      }
+      public enum Danger {
+        public static let Subtle: UIKit::UIColor
+        public static let SubtleHover: UIKit::UIColor
+        public static let SubtlePressed: UIKit::UIColor
+        public static let Strong: UIKit::UIColor
+        public static let StrongHover: UIKit::UIColor
+        public static let StrongPressed: UIKit::UIColor
+      }
+      public enum Success {
+        public static let Subtle: UIKit::UIColor
+        public static let Strong: UIKit::UIColor
+      }
+      public enum Info {
+        public static let Subtle: UIKit::UIColor
+        public static let Strong: UIKit::UIColor
+      }
+      public enum Warning {
+        public static let Subtle: UIKit::UIColor
+        public static let Strong: UIKit::UIColor
+      }
+      public enum Disabled {
+        public static let Subtler: UIKit::UIColor
+        public static let Subtle: UIKit::UIColor
+        public static let Strong: UIKit::UIColor
+        public static let Stronger: UIKit::UIColor
+      }
+    }
+    public enum Content {
+      public enum On {
+        public static let Primary: UIKit::UIColor
+        public static let Neutral: UIKit::UIColor
+        public static let Disabled: UIKit::UIColor
+        public static let Info: UIKit::UIColor
+        public static let Warning: UIKit::UIColor
+        public static let Danger: UIKit::UIColor
+        public static let Success: UIKit::UIColor
+      }
+      public enum Primary {
+        public static let Strong: UIKit::UIColor
+        public static let StrongHover: UIKit::UIColor
+        public static let Stronger: UIKit::UIColor
+        public static let Strongest: UIKit::UIColor
+      }
+      public enum Neutral {
+        public static let Strongest: UIKit::UIColor
+        public static let Stronger: UIKit::UIColor
+        public static let Strong: UIKit::UIColor
+        public static let Subtle: UIKit::UIColor
+        public static let SubtleHover: UIKit::UIColor
+        public static let SubtlePressed: UIKit::UIColor
+        public static let StrongestInverse: UIKit::UIColor
+      }
+      public enum Disabled {
+        public static let Subtle: UIKit::UIColor
+        public static let Strong: UIKit::UIColor
+      }
+      public enum Danger {
+        public static let Strong: UIKit::UIColor
+      }
+      public enum Success {
+        public static let Strong: UIKit::UIColor
+        public static let Inverse: UIKit::UIColor
+      }
+      public enum Warning {
+        public static let Strong: UIKit::UIColor
+      }
+      public enum Info {
+        public static let Strong: UIKit::UIColor
+      }
+    }
+    public enum Border {
+      public enum Neutral {
+        public static let Subtlest: UIKit::UIColor
+        public static let SubtlestHover: UIKit::UIColor
+        public static let Subtler: UIKit::UIColor
+        public static let SubtlerHover: UIKit::UIColor
+        public static let Subtle: UIKit::UIColor
+        public static let SubtleHover: UIKit::UIColor
+        public static let Strong: UIKit::UIColor
+        public static let StrongHover: UIKit::UIColor
+        public static let Stronger: UIKit::UIColor
+        public static let StrongerHover: UIKit::UIColor
+      }
+      public enum Primary {
+        public static let Subtle: UIKit::UIColor
+        public static let Strong: UIKit::UIColor
+        public static let StrongHover: UIKit::UIColor
+        public static let Stronger: UIKit::UIColor
+        public static let Focus: UIKit::UIColor
+      }
+      public enum Disabled {
+        public static let Subtle: UIKit::UIColor
+        public static let Strong: UIKit::UIColor
+      }
+      public enum Danger {
+        public static let Subtle: UIKit::UIColor
+        public static let Strong: UIKit::UIColor
+        public static let Focus: UIKit::UIColor
+      }
+      public enum Success {
+        public static let Subtle: UIKit::UIColor
+        public static let Strong: UIKit::UIColor
+      }
+      public enum Warning {
+        public static let Subtle: UIKit::UIColor
+        public static let Strong: UIKit::UIColor
+      }
+      public enum Info {
+        public static let Subtle: UIKit::UIColor
+        public static let Strong: UIKit::UIColor
+      }
+    }
+    public enum TopBar {
+      public static let ContentOnPrimary: UIKit::UIColor
+      public static let TopBar: UIKit::UIColor
+      public static let TopBarHover: UIKit::UIColor
+      public static let TopBarPressed: UIKit::UIColor
+      public static let TopBarStroke: UIKit::UIColor
+    }
+  }
+  @_spi(Catalog) public static let sections: [Catnip::CatnipColors.Catnip::Section]
+}
+extension SwiftUICore::Font {
+  public static let customTitle1: SwiftUICore::Font
+  public static let customTitle2: SwiftUICore::Font
+  public static let customTitle3: SwiftUICore::Font
+  public static let customBody: SwiftUICore::Font
+  public static let customCallout: SwiftUICore::Font
+  public static let customTerms: SwiftUICore::Font
+  public static let customFootnote: SwiftUICore::Font
+}
+public enum PaddingSize {
+  public static let single: CoreFoundation::CGFloat
+  public static let double: CoreFoundation::CGFloat
+  public static let xs: CoreFoundation::CGFloat
+  public static let s: CoreFoundation::CGFloat
+  public static let m: CoreFoundation::CGFloat
+  public static let l: CoreFoundation::CGFloat
+  public static let xl: CoreFoundation::CGFloat
+  public static let xxl: CoreFoundation::CGFloat
+}
+extension SwiftUICore::Spacer {
+  public static var s: some SwiftUICore::View {
+    get
+  }
+  public static var m: some SwiftUICore::View {
+    get
+  }
+  public static var l: some SwiftUICore::View {
+    get
+  }
+  public static var xl: some SwiftUICore::View {
+    get
+  }
+  public static var xxl: some SwiftUICore::View {
+    get
+  }
+  public static var felixble: some SwiftUICore::View {
+    get
+  }
+}
+extension SwiftUICore::TextAlignment {
+  public var toFrameAlignment: SwiftUICore::Alignment {
+    get
+  }
+}
+public enum CatnipIcon : Swift::String, Swift::CaseIterable, Swift::Identifiable {
+  case activity
+  case addPage
+  case addressBook
+  case adminSettings
+  case ai
+  case allDocuments
+  case android
+  case api
+  case apple
+  case arrowDown
+  case arrowLeft
+  case arrowRight
+  case arrowUp
+  case asterisk
+  case atSign
+  case attachment
+  case attributes
+  case auditLog
+  case autofill
+  case back
+  case background
+  case backspace
+  case bank
+  case bell
+  case bellNegative
+  case bellNoNotifications
+  case block
+  case borders
+  case branchChild
+  case branchParent
+  case branding
+  case building
+  case calendar
+  case calendarChanges
+  case camera
+  case card
+  case catnipIcon
+  case centreAlignment
+  case chat
+  case checkbox
+  case checklist
+  case chevronDown
+  case chevronLeft
+  case chevronRight
+  case chevronUp
+  case clock
+  case clone
+  case close
+  case closeCircle
+  case code
+  case codeOff
+  case codeOn
+  case collapse
+  case color
+  case columns
+  case comment
+  case compare
+  case condition
+  case connection
+  case consent
+  case cookie
+  case copy
+  case createdByMe
+  case crossFilled
+  case cut
+  case darkMode
+  case dashboard
+  case dataSources
+  case database
+  case delete
+  case demoteAdminRole
+  case desktop
+  case diagram
+  case documentation
+  case dot
+  case doubleArrowDown
+  case doubleArrowLeft
+  case doubleArrowRight
+  case doubleArrowTop
+  case doubleTick
+  case downloadFile
+  case draggable
+  case driversLicense
+  case dropdown
+  case eSigning
+  case edit
+  case email
+  case emojiSmile
+  case encrypted
+  case envelope
+  case error
+  case escalate
+  case exclamation
+  case exitFullscreen
+  case expand
+  case export
+  case `extension`
+  case externalLink
+  case eye
+  case eyeHidden
+  case filter
+  case flag
+  case flask
+  case flow
+  case flowCustom
+  case focus
+  case fold
+  case folder
+  case fonts
+  case formElements
+  case formStep
+  case forward
+  case forwardAll
+  case fullscreen
+  case globe
+  case header
+  case heading
+  case help
+  case history
+  case home
+  case idCard
+  case image
+  case `import`
+  case info
+  case invoice
+  case key
+  case language
+  case leftAlignment
+  case lightBulb
+  case lightMode
+  case lightning
+  case link
+  case list
+  case lock
+  case lockOpen
+  case login
+  case logout
+  case loop
+  case market
+  case menu
+  case metadataChanges
+  case migration
+  case minus
+  case minusCircle
+  case minusSquare
+  case missedDeadline
+  case mobile
+  case money
+  case more
+  case moreHorizontal
+  case nfcChip
+  case nfcChipCircle
+  case notificationsDisabled
+  case notificationsEnabled
+  case number
+  case overview
+  case page
+  case pageApproved
+  case passport
+  case paste
+  case pdfFile
+  case pen
+  case permisions
+  case phone
+  case pin
+  case pinned
+  case play
+  case plus
+  case plusCircle
+  case plusSquare
+  case postman
+  case print
+  case privateMessage
+  case productNews
+  case promoteAdmin
+  case publish
+  case pushLeft
+  case pushRight
+  case qrCode
+  case radio
+  case range
+  case refresh
+  case releaseNotes
+  case rename
+  case residenceCard
+  case restore
+  case rightAlignment
+  case rocket
+  case rocketLaunch
+  case rolesUser
+  case sandbox
+  case saveContact
+  case scissors
+  case sealing
+  case search
+  case section
+  case secure
+  case send
+  case settings
+  case share
+  case sidebarCollapse
+  case sidebarExpand
+  case signatureCollection
+  case signatureWithCustomPurpose
+  case signicatIcon
+  case simCard
+  case sms
+  case sort
+  case sortDown
+  case sortUp
+  case speaker
+  case speakerDisabled
+  case star
+  case starFilled
+  case startAndCopyUrl
+  case steps
+  case stop
+  case support
+  case swap
+  case switchAccount
+  case tables
+  case tablet
+  case tag
+  case target
+  case templates
+  case text
+  case textArea
+  case textDocumentFile
+  case textareaResize
+  case thumbsDown
+  case thumbsDownFilled
+  case thumbsUp
+  case thumbsUpFilled
+  case tick
+  case tickCircle
+  case tickFilled
+  case toggle
+  case transferOwnership
+  case unfold
+  case unpin
+  case unpublish
+  case uploadFile
+  case user
+  case userAlternative
+  case userWaiting
+  case userWaitingUnavailable
+  case users
+  case videocam
+  case viewCompanyUsersDocuments
+  case warning
+  case widget
+  case zipFile
+  public var id: Swift::String {
+    get
+  }
+  public var swiftUIImage: SwiftUICore::Image {
+    get
+  }
+  public init?(rawValue: Swift::String)
+  public typealias AllCases = [Catnip::CatnipIcon]
+  public typealias ID = Swift::String
+  public typealias RawValue = Swift::String
+  nonisolated public static var allCases: [Catnip::CatnipIcon] {
+    get
+  }
+  public var rawValue: Swift::String {
+    get
+  }
+}
+@_Concurrency::MainActor @preconcurrency public struct AnimatedGIFView : SwiftUI::UIViewRepresentable {
+  @_Concurrency::MainActor @preconcurrency public init(url: Foundation::URL)
+  @_Concurrency::MainActor @preconcurrency public func makeUIView(context: Catnip::AnimatedGIFView.SwiftUI::Context) -> WebKit::WKWebView
+  @_Concurrency::MainActor @preconcurrency public func updateUIView(_ webView: WebKit::WKWebView, context: Catnip::AnimatedGIFView.SwiftUI::Context)
+  public typealias Body = Swift::Never
+  public typealias Coordinator = Swift::Void
+  public typealias UIViewType = WebKit::WKWebView
+}
+@_Concurrency::MainActor @preconcurrency public struct ImageView : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let image: SwiftUICore::Image?
+  @_Concurrency::MainActor @preconcurrency public let color: SwiftUICore::Color?
+  @_Concurrency::MainActor @preconcurrency public let size: CoreFoundation::CGFloat
+  @_Concurrency::MainActor @preconcurrency public init(image: SwiftUICore::Image?, color: SwiftUICore::Color?, size: CoreFoundation::CGFloat)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip9ImageViewV4bodyQrvp", 0) __
+}
+@_Concurrency::MainActor @preconcurrency public struct MainImage : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let mainImageURL: Foundation::URL
+  @_Concurrency::MainActor @preconcurrency public let accessibilityLabel: Swift::String
+  @_Concurrency::MainActor @preconcurrency public init(mainImageURL: Foundation::URL, accessibilityLabel: Swift::String)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip9MainImageV4bodyQrvp", 0) __
+}
+
+@_Concurrency::MainActor @preconcurrency public struct URLImageView : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let imageURL: Foundation::URL
+  @_Concurrency::MainActor @preconcurrency public let accessibilityLabel: Swift::String
+  @_Concurrency::MainActor @preconcurrency public init(imageURL: Foundation::URL, accessibilityLabel: Swift::String)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip12URLImageViewV4bodyQrvp", 0) __
+}
+
+public enum Pictogram : Swift::String, Swift::CaseIterable, Swift::Identifiable {
+  case accountAPI
+  case advancedGraphicalProfile
+  case antivirus
+  case api
+  case auditLog
+  case biometrics
+  case client
+  case devPortal
+  case electronicSignatureComputer
+  case electronicSignaturePhone
+  case financialCrime
+  case flowWorker
+  case folder
+  case form
+  case fraud
+  case globalPlatform
+  case handwrittenSignature
+  case idCardBack
+  case idCardFront
+  case importCode
+  case importFile
+  case linkShortener
+  case newFile
+  case noResults
+  case openBanking
+  case pepsSanctionsAdverseMedia
+  case permissionsForUsers
+  case permissionsMachines
+  case qrCode
+  case quotaService
+  case restAPIAuth
+  case roles
+  case rotatePhone
+  case smartCard
+  case smile
+  case transactionMonitoring
+  case users
+  case usersAlternative
+  case workflow
+  public var id: Swift::String {
+    get
+  }
+  public var swiftUIImage: SwiftUICore::Image {
+    get
+  }
+  public init?(rawValue: Swift::String)
+  public typealias AllCases = [Catnip::Pictogram]
+  public typealias ID = Swift::String
+  public typealias RawValue = Swift::String
+  nonisolated public static var allCases: [Catnip::Pictogram] {
+    get
+  }
+  public var rawValue: Swift::String {
+    get
+  }
+}
+@_Concurrency::MainActor @preconcurrency public struct BodyText : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let text: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let accessibilityLabel: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let color: SwiftUICore::Color?
+  @_Concurrency::MainActor @preconcurrency public let alignment: SwiftUICore::TextAlignment
+  @_Concurrency::MainActor @preconcurrency public init(text: Swift::String, accessibilityLabel: Swift::String? = nil, color: SwiftUICore::Color? = CatnipColors.Content.Neutral.Strongest, alignment: SwiftUICore::TextAlignment? = .center)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip8BodyTextV4bodyQrvp", 0) __
+}
+
+@_Concurrency::MainActor @preconcurrency public struct CalloutText : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let text: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let accessibilityLabel: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let alignment: SwiftUICore::TextAlignment
+  @_Concurrency::MainActor @preconcurrency public init(text: Swift::String, accessibilityLabel: Swift::String? = nil, alignment: SwiftUICore::TextAlignment = .leading)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip11CalloutTextV4bodyQrvp", 0) __
+}
+
+@_Concurrency::MainActor @preconcurrency public struct TermsConditionsText : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let text: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let accessibilityLabel: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let alignment: SwiftUICore::TextAlignment
+  @_Concurrency::MainActor @preconcurrency public init(text: Swift::String, accessibilityLabel: Swift::String? = nil, alignment: SwiftUICore::TextAlignment = .center)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip19TermsConditionsTextV4bodyQrvp", 0) __
+}
+
+@_Concurrency::MainActor @preconcurrency public struct TextFootnote : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let text: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let alignment: SwiftUICore::TextAlignment
+  @_Concurrency::MainActor @preconcurrency public let accessibilityLabel: Swift::String
+  @_Concurrency::MainActor @preconcurrency public init(text: Swift::String, alignment: SwiftUICore::TextAlignment = .leading, accessibilityLabel: Swift::String? = nil)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip12TextFootnoteV4bodyQrvp", 0) __
+}
+@_Concurrency::MainActor @preconcurrency public struct Title2Text : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let text: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let accessibilityLabel: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let alignment: SwiftUICore::TextAlignment
+  @_Concurrency::MainActor @preconcurrency public init(text: Swift::String, accessibilityLabel: Swift::String? = nil, alignment: SwiftUICore::TextAlignment = .center)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip10Title2TextV4bodyQrvp", 0) __
+}
+
+@_Concurrency::MainActor @preconcurrency public struct Title3Text : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let text: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let accessibilityLabel: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let alignment: SwiftUICore::TextAlignment
+  @_Concurrency::MainActor @preconcurrency public init(text: Swift::String, accessibilityLabel: Swift::String? = nil, alignment: SwiftUICore::TextAlignment = .center)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip10Title3TextV4bodyQrvp", 0) __
+}
+
+@_Concurrency::MainActor @preconcurrency public struct TitleText : SwiftUICore::View {
+  @_Concurrency::MainActor @preconcurrency public let text: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let accessibilityLabel: Swift::String
+  @_Concurrency::MainActor @preconcurrency public let alignment: SwiftUICore::TextAlignment
+  @_Concurrency::MainActor @preconcurrency public init(text: Swift::String, accessibilityLabel: Swift::String? = nil, alignment: SwiftUICore::TextAlignment = .center)
+  @_Concurrency::MainActor @preconcurrency public var body: some SwiftUICore::View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s6Catnip9TitleTextV4bodyQrvp", 0) __
+}
+
+extension Catnip::ActionButton : Swift::Sendable {}
+extension Catnip::BackButton : Swift::Sendable {}
+extension Catnip::SecondaryButton : Swift::Sendable {}
+extension Catnip::Badge : Swift::Sendable {}
+extension Catnip::Badge.Catnip::Kind : Swift::Equatable {}
+extension Catnip::Badge.Catnip::Kind : Swift::Hashable {}
+extension Catnip::Badge.Catnip::Fill : Swift::Equatable {}
+extension Catnip::Badge.Catnip::Fill : Swift::Hashable {}
+extension Catnip::Badge.Catnip::Size : Swift::Equatable {}
+extension Catnip::Badge.Catnip::Size : Swift::Hashable {}
+extension Catnip::AlertView : Swift::Sendable {}
+extension Catnip::AlertView.Catnip::Kind : Swift::Equatable {}
+extension Catnip::AlertView.Catnip::Kind : Swift::Hashable {}
+extension Catnip::AlertView.Catnip::Style : Swift::Equatable {}
+extension Catnip::AlertView.Catnip::Style : Swift::Hashable {}
+extension Catnip::AlertView.Catnip::Size : Swift::Equatable {}
+extension Catnip::AlertView.Catnip::Size : Swift::Hashable {}
+extension Catnip::ButtonsComponent : Swift::Sendable {}
+extension Catnip::CardView : Swift::Sendable {}
+extension Catnip::ClearableTextField : Swift::Sendable {}
+extension Catnip::CodeInput : Swift::Sendable {}
+extension Catnip::DropDownList : Swift::Sendable {}
+extension Catnip::HeaderLabelView : Swift::Sendable {}
+extension Catnip::InfoTipView : Swift::Sendable {}
+extension Catnip::MainContent : Swift::Sendable {}
+extension Catnip::PhoneInput : Swift::Sendable {}
+extension Catnip::SelectorRowView : Swift::Sendable {}
+extension Catnip::SpinnerView : Swift::Sendable {}
+extension Catnip::StepItem.Catnip::State : Swift::Equatable {}
+extension Catnip::StepItem.Catnip::State : Swift::Hashable {}
+extension Catnip::StepperView : Swift::Sendable {}
+extension Catnip::TextItemListView : Swift::Sendable {}
+extension Catnip::TextItemView : Swift::Sendable {}
+extension Catnip::CatnipIcon : Swift::Equatable {}
+extension Catnip::CatnipIcon : Swift::Hashable {}
+extension Catnip::CatnipIcon : Swift::RawRepresentable {}
+extension Catnip::AnimatedGIFView : Swift::Sendable {}
+extension Catnip::ImageView : Swift::Sendable {}
+extension Catnip::MainImage : Swift::Sendable {}
+extension Catnip::URLImageView : Swift::Sendable {}
+extension Catnip::Pictogram : Swift::Equatable {}
+extension Catnip::Pictogram : Swift::Hashable {}
+extension Catnip::Pictogram : Swift::RawRepresentable {}
+extension Catnip::BodyText : Swift::Sendable {}
+extension Catnip::CalloutText : Swift::Sendable {}
+extension Catnip::TermsConditionsText : Swift::Sendable {}
+extension Catnip::TextFootnote : Swift::Sendable {}
+extension Catnip::Title2Text : Swift::Sendable {}
+extension Catnip::Title3Text : Swift::Sendable {}
+extension Catnip::TitleText : Swift::Sendable {}

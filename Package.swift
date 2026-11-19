@@ -3,9 +3,7 @@
 
 import PackageDescription
 
-let version: String = "26.46.0-RC"
-let urlVersion: String = "26.46.0"
-let checksum: String = "54e37903865a09571f56419cc1b4c22e6b2eaf9c6f4db0a3f8149c26f1da6482"
+let version: String = "26.48.0-beta"
 let catnipVersion = Version(0, 0, 11)
 
 let dependencies: [Target.Dependency] = [
@@ -32,8 +30,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "VideoIDSDK",
-            url: "https://eid-librerias-ios.s3.eu-west-1.amazonaws.com/VideoID-sdk/\(urlVersion)/VideoIDSDK.xcframework.zip",
-            checksum: checksum
+            // VID-10532 beta: iPhone Duo rotation diagnostics build, shipped in-repo (no S3 upload).
+            path: "VideoIDSDK.xcframework"
         ),
         .target(name: "_VideoIDSDKStub",
                 dependencies: dependencies,
