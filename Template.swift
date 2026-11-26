@@ -27,7 +27,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/signicat/catnip-spm.git", exact: catnipVersion),
         .package(url: "https://github.com/airbnb/lottie-spm.git", exact: "4.5.2"),
-        .package(url: "https://github.com/stasel/WebRTC.git", exact: "134.0.0"),
+        .package(url: "https://github.com/stasel/WebRTC.git", exact: "157.0.0"),
     ],
     targets: [
         .binaryTarget(
